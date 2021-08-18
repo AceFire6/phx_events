@@ -1,6 +1,9 @@
 from anyio import run
 
-from phx_events.async_logger import logger
+from phx_events.async_logger import async_logger
+
+
+logger = async_logger.getChild(__name__)
 
 
 async def main():

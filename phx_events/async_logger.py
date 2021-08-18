@@ -41,4 +41,4 @@ def setup_queue_logging() -> tuple[logging.Logger, QueueListener]:
     return queue_logger, listener
 
 
-logger, queue_listener = setup_queue_logging()
+async_logger, queue_listener = setup_queue_logging()
