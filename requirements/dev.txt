@@ -7,7 +7,9 @@
 astor==0.8.1
     # via flake8-simplify
 attrs==21.2.0
-    # via pytest
+    # via
+    #   -c requirements/core.txt
+    #   pytest
 chardet==4.0.0
     # via diff-cover
 coverage==5.5
