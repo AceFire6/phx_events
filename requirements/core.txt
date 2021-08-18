@@ -29,6 +29,8 @@ idna==3.2
     #   trio
 marshmallow==3.13.0
     # via environs
+orjson==3.6.2
+    # via -r requirements/core.in
 outcome==1.1.0
     # via trio
 python-dotenv==0.19.0
