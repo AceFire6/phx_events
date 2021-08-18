@@ -3,6 +3,21 @@
 PHX Events is an AsyncIO library to set up a websocket connection with 
 [Phoenix](https://phoenixframework.org/) in Python 3.9+ via Phoenix Channels.
 
+## Running PHX Events
+
+1. Create a virtualenv
+2. Install the dependencies
+
+    ```shell
+    pip install -r requirements/core.txt
+    ```
+
+3. Run `phx_events`
+
+    ```shell
+    python -m phx_events
+    ```
+
 ## Developing
 
 This project uses [`pip-tools`](https://github.com/jazzband/pip-tools/) to manage dependencies.
