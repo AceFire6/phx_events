@@ -47,3 +47,6 @@ jobs:
 
     - name: iSort Python Files
       run: isort --check-only .
+
+    - name: mypy Python Files
+      run: mypy .
