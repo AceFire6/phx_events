@@ -12,6 +12,9 @@ class PHXEvent(Enum):
     reply = 'phx_reply'
     leave = 'phx_leave'
 
+    # hack for typing
+    value: str
+
     def __str__(self) -> str:
         return self.value
 
