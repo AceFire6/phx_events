@@ -1,0 +1,11 @@
+[flake8]
+exclude = .git
+ignore = W504
+import-order-style = google
+max-line-length = 120
+application-import-names = phx_events, tests
+
+# flake-quotes settings
+inline-quotes = single
+multiline-quotes = single
+docstring-quotes = double
