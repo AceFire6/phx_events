@@ -21,7 +21,7 @@ def setup_queue_logging() -> tuple[logging.Logger, QueueListener]:
     and start a logging.QueueListener holding the original
     handlers.
     """
-    queue = SimpleQueue()
+    queue: SimpleQueue = SimpleQueue()
     queue_logger = logging.getLogger(__name__)
 
     handlers: list[logging.Handler] = []

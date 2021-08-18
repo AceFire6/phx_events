@@ -5,12 +5,15 @@ from typing import Any, Optional
 
 
 @unique
-class PHXEvent(str, Enum):
+class PHXEvent(Enum):
     close = 'phx_close'
     error = 'phx_error'
     join = 'phx_join'
     reply = 'phx_reply'
     leave = 'phx_leave'
+
+    def __str__(self) -> str:
+        return self.value
 
 
 @dataclass(frozen=True)
