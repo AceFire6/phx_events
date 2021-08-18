@@ -1,1 +1,16 @@
 -c core.txt
+
+coverage
+diff-cover
+flake8-broken-line
+flake8-commas
+flake8-comprehensions
+flake8-import-order
+flake8-print
+flake8-quotes
+flake8-simplify
+isort
+pep8-naming
+pytest
+pytest-cov
+pytest-xdist
