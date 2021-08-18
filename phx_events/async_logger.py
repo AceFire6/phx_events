@@ -40,4 +40,9 @@ def setup_queue_logging() -> tuple[logging.Logger, QueueListener]:
     return queue_logger, listener
 
 
+def setup_base_logger() -> None:
+    logging.basicConfig(level=logging.INFO)
+
+
+setup_base_logger()
 logger, queue_listener = setup_queue_logging()
