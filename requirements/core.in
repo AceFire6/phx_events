@@ -1,3 +1,4 @@
 anyio[trio]
+environs
 httpx
 websockets
