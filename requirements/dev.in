@@ -10,6 +10,7 @@ flake8-print
 flake8-quotes
 flake8-simplify
 isort
+mypy
 pep8-naming
 pytest
 pytest-cov
