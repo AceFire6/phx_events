@@ -24,8 +24,10 @@ def setup_queue_logging() -> tuple[logging.Logger, QueueListener]:
     queue: SimpleQueue = SimpleQueue()
     queue_logger = logging.getLogger(__name__)
 
+    handlers: list[logging.Handler] = []
     # Last resort handler if no logging is configured
-    handlers: list[logging.Handler] = [logging.lastResort]
+    if logging.lastResort is not None:
+        handlers.append(logging.lastResort)
 
     local_queue_handler = LocalQueueHandler(queue)
     queue_logger.addHandler(local_queue_handler)
