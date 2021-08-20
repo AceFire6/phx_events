@@ -3,14 +3,14 @@ from dataclasses import dataclass
 from enum import Enum, unique
 from functools import cached_property
 from logging import Logger
-from typing import Any, Callable, NewType, Optional, TypedDict, Union
+from typing import Any, Callable, Coroutine, NewType, Optional, TypedDict, Union
 
 
 Topic = NewType('Topic', str)
 Event = NewType('Event', str)
 ChannelEvent = Union['PHXEvent', Event]
 ChannelMessage = Union['PHXMessage', 'PHXEventMessage']
-HandlerFunction = Callable[[ChannelMessage, Logger], None]
+HandlerFunction = Callable[[ChannelMessage, Logger], Coroutine[None]]
 
 
 class EventMap(TypedDict):
