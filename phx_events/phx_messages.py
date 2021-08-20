@@ -1,9 +1,23 @@
+from asyncio import Queue, Task
 from dataclasses import dataclass
 from enum import Enum, unique
 from functools import cached_property
-from typing import Any, Optional
+from logging import Logger
+from typing import Any, Callable, NewType, Optional, TypedDict, Union
 
-from phx_events.local_types import Event, Topic
+
+Topic = NewType('Topic', str)
+Event = NewType('Event', str)
+ChannelEvent = Union['PHXEvent', Event]
+ChannelMessage = Union['PHXMessage', 'PHXEventMessage']
+HandlerFunction = Callable[[ChannelMessage, Logger], None]
+
+
+class EventMap(TypedDict):
+    queue: Queue[ChannelMessage]
+    handlers: list[HandlerFunction]
+    task: Task[None]
+    topic: Optional[Topic]
 
 
 @unique

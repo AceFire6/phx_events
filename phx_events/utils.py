@@ -1,8 +1,7 @@
 from datetime import datetime
 from typing import Any, Optional
 
-from phx_events.local_types import ChannelEvent, ChannelMessage, Topic
-from phx_events.phx_messages import PHXEvent, PHXEventMessage, PHXMessage
+from phx_events.phx_messages import ChannelEvent, ChannelMessage, PHXEvent, PHXEventMessage, PHXMessage, Topic
 
 
 def parse_event(event: ChannelEvent) -> ChannelEvent:
