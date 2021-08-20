@@ -1,4 +1,4 @@
-from asyncio import Queue, Task
+import asyncio
 from dataclasses import dataclass
 from enum import Enum, unique
 from functools import cached_property
@@ -14,9 +14,9 @@ HandlerFunction = Callable[[ChannelMessage, Logger], Coroutine[None]]
 
 
 class EventMap(TypedDict):
-    queue: Queue[ChannelMessage]
+    queue: asyncio.Queue[ChannelMessage]
     handlers: list[HandlerFunction]
-    task: Task[None]
+    task: asyncio.Task[None]
     topic: Optional[Topic]
 
 
