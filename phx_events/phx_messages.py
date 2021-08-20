@@ -3,6 +3,8 @@ from enum import Enum, unique
 from functools import cached_property
 from typing import Any, Optional
 
+from phx_events.local_types import Event, Topic
+
 
 @unique
 class PHXEvent(Enum):
@@ -21,7 +23,7 @@ class PHXEvent(Enum):
 
 @dataclass(frozen=True)
 class BasePHXMessage:
-    topic: str
+    topic: Topic
     ref: Optional[str]
     payload: dict[str, Any]
 
@@ -36,7 +38,7 @@ class BasePHXMessage:
 
 @dataclass(frozen=True)
 class PHXMessage(BasePHXMessage):
-    event: str
+    event: Event
 
 
 @dataclass(frozen=True)

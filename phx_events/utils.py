@@ -1,20 +1,20 @@
 from datetime import datetime
 from typing import Any, Optional
 
-from phx_events.local_types import ChannelEvent, ChannelMessage
+from phx_events.local_types import ChannelEvent, ChannelMessage, Topic
 from phx_events.phx_messages import PHXEvent, PHXEventMessage, PHXMessage
 
 
-def parse_event(raw_event: ChannelEvent) -> ChannelEvent:
+def parse_event(event: ChannelEvent) -> ChannelEvent:
     try:
-        return PHXEvent(raw_event)
+        return PHXEvent(event)
     except ValueError:
-        return raw_event
+        return event
 
 
 def make_message(
     event: ChannelEvent,
-    topic: str,
+    topic: Topic,
     reference: Optional[str] = None,
     payload: Optional[dict[str, Any]] = None,
 ) -> ChannelMessage:
