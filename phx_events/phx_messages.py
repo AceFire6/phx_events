@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from enum import Enum, unique
 from functools import cached_property
 from logging import Logger
-from typing import Any, Callable, Coroutine, NewType, Optional, TypedDict, Union
+from typing import Any, Callable, Coroutine, NewType, Optional, Union
 
 
 Topic = NewType('Topic', str)
@@ -13,7 +13,8 @@ ChannelMessage = Union['PHXMessage', 'PHXEventMessage']
 HandlerFunction = Callable[[ChannelMessage, Logger], Coroutine[None]]
 
 
-class EventMap(TypedDict):
+@dataclass()
+class EventMap:
     queue: asyncio.Queue[ChannelMessage]
     handlers: list[HandlerFunction]
     task: asyncio.Task[None]
