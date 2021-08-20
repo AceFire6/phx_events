@@ -9,6 +9,7 @@ flake8-import-order
 flake8-print
 flake8-quotes
 flake8-simplify
+hypothesis
 isort
 mypy
 pep8-naming
