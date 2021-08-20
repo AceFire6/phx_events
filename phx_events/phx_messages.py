@@ -14,11 +14,11 @@ HandlerFunction = Callable[[ChannelMessage, Logger], Coroutine[None]]
 
 
 @dataclass()
-class EventMap:
+class EventHandlerConfig:
     queue: asyncio.Queue[ChannelMessage]
-    handlers: list[HandlerFunction]
+    default_handlers: list[HandlerFunction]
+    topic_handlers: dict[Topic, list[HandlerFunction]]
     task: asyncio.Task[None]
-    topic: Optional[Topic]
 
 
 @unique
