@@ -1,4 +1,4 @@
-from anyio import run
+import asyncio
 
 from phx_events.async_logger import async_logger
 
@@ -11,4 +11,4 @@ async def main():
 
 
 if __name__ == '__main__':
-    run(main)
+    asyncio.run(main())
