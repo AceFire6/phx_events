@@ -2,22 +2,28 @@ import asyncio
 from dataclasses import dataclass
 from enum import Enum, unique
 from functools import cached_property
-from logging import Logger
-from typing import Any, Callable, Coroutine, NewType, Optional, Union
+from typing import Any, Callable, Coroutine, NewType, Optional, TYPE_CHECKING, Union
+
+
+if TYPE_CHECKING:
+    from phx_events.channels_client import PHXChannelsClient
 
 
 Topic = NewType('Topic', str)
 Event = NewType('Event', str)
 ChannelEvent = Union['PHXEvent', Event]
 ChannelMessage = Union['PHXMessage', 'PHXEventMessage']
-HandlerFunction = Callable[[ChannelMessage, Logger], Coroutine[None]]
+
+EventHandlerFunction = Callable[['PHXMessage', 'PHXChannelsClient'], Coroutine[Any, Any, None]]
+PHXEventHandlerFunction = Callable[['PHXEventMessage', 'PHXChannelsClient'], Coroutine[Any, Any, None]]
+ChannelHandlerFunction = Union[EventHandlerFunction, PHXEventHandlerFunction]
 
 
 @dataclass()
 class EventHandlerConfig:
     queue: asyncio.Queue[ChannelMessage]
-    default_handlers: list[HandlerFunction]
-    topic_handlers: dict[Topic, list[HandlerFunction]]
+    default_handlers: list[ChannelHandlerFunction]
+    topic_handlers: dict[Topic, list[ChannelHandlerFunction]]
     task: asyncio.Task[None]
 
 
