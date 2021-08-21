@@ -4,14 +4,8 @@
 #
 #    pip-compile requirements/core.in
 #
-anyio[trio]==3.3.0
-    # via
-    #   -r requirements/core.in
-    #   httpcore
-async-generator==1.10
-    # via trio
-attrs==21.2.0
-    # via trio
+anyio==3.3.0
+    # via httpcore
 certifi==2021.5.30
     # via httpx
 environs==9.3.3
@@ -26,13 +20,10 @@ idna==3.2
     # via
     #   anyio
     #   rfc3986
-    #   trio
 marshmallow==3.13.0
     # via environs
 orjson==3.6.2
     # via -r requirements/core.in
-outcome==1.1.0
-    # via trio
 python-dotenv==0.19.0
     # via environs
 rfc3986[idna2008]==1.5.0
@@ -42,10 +33,5 @@ sniffio==1.2.0
     #   anyio
     #   httpcore
     #   httpx
-    #   trio
-sortedcontainers==2.4.0
-    # via trio
-trio==0.19.0
-    # via anyio
 websockets==9.1
     # via -r requirements/core.in

@@ -1,4 +1,3 @@
-anyio[trio]
 environs
 httpx
 orjson

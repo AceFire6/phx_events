@@ -8,7 +8,6 @@ astor==0.8.1
     # via flake8-simplify
 attrs==21.2.0
     # via
-    #   -c requirements/core.txt
     #   hypothesis
     #   pytest
 chardet==4.0.0
@@ -113,9 +112,7 @@ six==1.16.0
     #   flake8-print
     #   python-dateutil
 sortedcontainers==2.4.0
-    # via
-    #   -c requirements/core.txt
-    #   hypothesis
+    # via hypothesis
 toml==0.10.2
     # via
     #   mypy
