@@ -121,6 +121,8 @@ toml==0.10.2
     #   mypy
     #   pytest
     #   pytest-cov
+types-freezegun==1.1.0
+    # via -r requirements/dev.in
 typing-extensions==3.10.0.0
     # via mypy
 

@@ -17,3 +17,4 @@ pep8-naming
 pytest
 pytest-cov
 pytest-xdist
+types-freezegun
