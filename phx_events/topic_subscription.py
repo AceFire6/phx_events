@@ -35,9 +35,5 @@ async def process_topic_join_reply(message: PHXEventMessage, client: 'PHXChannel
 
     status = SubscriptionStatus.SUCCESS if message.payload['status'] == 'ok' else SubscriptionStatus.FAILED
 
-    # Get the topic status map
-    topic_registration = client.topic_registration_status[topic]
-    # Set topic status with the message
-    topic_registration.status = TopicSubscribeResult(status, message)
-    # Notify any waiting tasks that the registration has been finalised and the status can be checked
-    topic_registration.status_updated_event.set()
+    # Set the topic status map
+    await client.set_topic_join_state(topic, status, message)
