@@ -58,7 +58,7 @@ jobs:
       run: |
         echo 'DIFF_COVERAGE<<EOF' >> "$GITHUB_ENV"
         # shellcheck disable=SC2005
-        echo "$(diff-cover coverage.xml --compare-branch=${{ github.base_ref }} --fail-under 100 2>&1)" >> "$GITHUB_ENV"
+        echo "$(diff-cover coverage.xml --fail-under 100 2>&1)" >> "$GITHUB_ENV"
         echo 'EOF' >> "$GITHUB_ENV"
 
     - name: Add Diff Coverage Comment - Missing Coverage
