@@ -4,34 +4,13 @@
 #
 #    pip-compile requirements/core.in
 #
-anyio==3.3.0
-    # via httpcore
-certifi==2021.5.30
-    # via httpx
 environs==9.3.3
     # via -r requirements/core.in
-h11==0.12.0
-    # via httpcore
-httpcore==0.13.6
-    # via httpx
-httpx==0.18.2
-    # via -r requirements/core.in
-idna==3.2
-    # via
-    #   anyio
-    #   rfc3986
 marshmallow==3.13.0
     # via environs
 orjson==3.6.2
     # via -r requirements/core.in
 python-dotenv==0.19.0
     # via environs
-rfc3986[idna2008]==1.5.0
-    # via httpx
-sniffio==1.2.0
-    # via
-    #   anyio
-    #   httpcore
-    #   httpx
 websockets==9.1
     # via -r requirements/core.in
