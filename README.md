@@ -1,22 +1,59 @@
 # PHX Events
 
 PHX Events is an AsyncIO library to set up a websocket connection with 
-[Phoenix](https://phoenixframework.org/) in Python 3.9+ via Phoenix Channels.
+[Phoenix Channels](https://phoenixframework.readme.io/docs/channels) in Python 3.8+.
 
-## Running PHX Events
+## Installing PHX Events
 
-1. Create a virtualenv
-2. Install the dependencies
+### From Pip
+```shell
+pip install phx-events
+```
 
-    ```shell
-    pip install -r requirements/core.txt
-    ```
+### From Source
+Clone the Git repo and then install the dependencies
+```shell
+pip install -r requirements/core.txt
+```
 
-3. Run `phx_events`
+## Use the client in your code:
 
-    ```shell
-    python -m phx_events
-    ```
+```python
+import asyncio
+from concurrent.futures import ThreadPoolExecutor
+
+from phx_events.channels_client import PHXChannelsClient
+from phx_events.phx_messages import ChannelMessage, Event, Topic
+
+
+def print_handler(message: ChannelMessage, client: PHXChannelsClient) -> None:
+    client.logger.info(f'DEFAULT: {message=}')
+
+
+async def async_print_handler(message: ChannelMessage, client: PHXChannelsClient) -> None:
+    client.logger.info(f'ASYNC: {message=}')
+
+
+async def main() -> None:
+    token = 'auth_token'
+    client: PHXChannelsClient
+
+    with ThreadPoolExecutor() as pool:
+        async with PHXChannelsClient(token) as client:
+            client.register_event_handler(
+                event=Event('event_name'),
+                handlers=[
+                    print_handler,
+                    async_print_handler,
+                ],
+            )
+            client.register_topic_subscription(Topic('topic:subtopic'))
+
+            await client.start_processing(pool)
+
+if __name__ == '__main__':
+    asyncio.run(main(), debug=True)
+```
 
 ## Developing
 
