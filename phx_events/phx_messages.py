@@ -2,15 +2,15 @@ import asyncio
 from dataclasses import dataclass
 from enum import Enum, unique
 from functools import cached_property
-from typing import Any, Optional, Protocol, TYPE_CHECKING, Union
+from typing import Any, NewType, Optional, Protocol, TYPE_CHECKING, Union
 
 
 if TYPE_CHECKING:
     from phx_events.channels_client import PHXChannelsClient
 
 
-Topic = str
-Event = str
+Topic = NewType('Topic', str)
+Event = NewType('Event', str)
 ChannelEvent = Union['PHXEvent', Event]
 ChannelMessage = Union['PHXMessage', 'PHXEventMessage']
 
@@ -58,7 +58,7 @@ class BasePHXMessage:
     payload: dict[str, Any]
 
     @cached_property
-    def subtopic(self):
+    def subtopic(self) -> Optional[str]:
         if ':' not in self.topic:
             return None
 
