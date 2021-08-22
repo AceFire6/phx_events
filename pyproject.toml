@@ -35,7 +35,6 @@ dependencies = [
 file = "LICENSE"
 
 [project.urls]
-Home = "https://jethromuller.co.za/"
 Source = "https://github.com/AceFire6/phx_event"
 
 [tool.flit.module]
