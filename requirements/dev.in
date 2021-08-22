@@ -18,3 +18,4 @@ pytest
 pytest-cov
 pytest-xdist
 types-freezegun
+types-orjson
