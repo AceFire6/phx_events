@@ -5,7 +5,7 @@ build-backend = "flit_core.buildapi"
 [project]
 name = "phx-events"
 authors = [{name = "Jethro Muller", email = "git@jethromuller.co.za"}]
-requires-python = ">=3.8,<4"
+requires-python = ">=3.9,<4"
 readme = "README.md"
 keywords = [
     "asyncio",
@@ -21,7 +21,6 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
 ]
 dynamic = ["version", "description"]
