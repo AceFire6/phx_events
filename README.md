@@ -1,5 +1,9 @@
 # PHX Events
 
+[![Test PHX Events](https://github.com/AceFire6/phx_events/actions/workflows/run_tests.yml/badge.svg)](https://github.com/AceFire6/phx_events/actions/workflows/run_tests.yml)
+[![Lint Python](https://github.com/AceFire6/phx_events/actions/workflows/lint_python.yml/badge.svg)](https://github.com/AceFire6/phx_events/actions/workflows/lint_python.yml)
+[![Lint Github Workflows](https://github.com/AceFire6/phx_events/actions/workflows/lint_workflows.yml/badge.svg)](https://github.com/AceFire6/phx_events/actions/workflows/lint_workflows.yml)
+
 PHX Events is an AsyncIO library to set up a websocket connection with 
 [Phoenix Channels](https://phoenixframework.readme.io/docs/channels) in Python 3.9+.
 
