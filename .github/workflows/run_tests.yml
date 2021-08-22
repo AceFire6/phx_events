@@ -9,13 +9,17 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        python_version: [3.8, 3.9]
+
     steps:
     - uses: actions/checkout@v2
 
-    - name: Set up Python 3.9
+    - name: Set up Python ${{ matrix.python_version }}
       uses: actions/setup-python@v2
       with:
-        python-version: 3.9
+        python-version: ${{ matrix.python_version }}
 
     - name: Get OS Version
       run: echo "os_version=$(lsb_release -sr)" >> "$GITHUB_ENV"
