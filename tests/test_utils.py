@@ -30,14 +30,14 @@ class TestMakeMessage:
     @given(
         event=st.sampled_from(PHX_EVENTS),
         topic=st.text(),
-        reference=st.text() | st.none(),
+        ref=st.text() | st.none(),
         payload=message_payload,
     )
-    def test_phx_event_message_returned_for_phx_event(self, event, topic, reference, payload):
+    def test_phx_event_message_returned_for_phx_event(self, event, topic, ref, payload):
         message = utils.make_message(
             event=event,
             topic=topic,
-            reference=reference,
+            ref=ref,
             payload=payload,
         )
 
@@ -47,14 +47,14 @@ class TestMakeMessage:
     @given(
         event=st.text().filter(lambda x: x not in PHX_EVENTS),
         topic=st.text(),
-        reference=st.text() | st.none(),
+        ref=st.text() | st.none(),
         payload=message_payload,
     )
-    def test_phx_message_returned_for_other_events(self, event, topic, reference, payload):
+    def test_phx_message_returned_for_other_events(self, event, topic, ref, payload):
         message = utils.make_message(
             event=event,
             topic=topic,
-            reference=reference,
+            ref=ref,
             payload=payload,
         )
 
@@ -64,14 +64,14 @@ class TestMakeMessage:
     @given(
         event=st.text(),
         topic=st.text(),
-        reference=st.text() | st.none(),
+        ref=st.text() | st.none(),
         payload=st.none(),
     )
-    def test_none_payload_turned_into_empty_dict(self, event, topic, reference, payload):
+    def test_none_payload_turned_into_empty_dict(self, event, topic, ref, payload):
         message = utils.make_message(
             event=event,
             topic=topic,
-            reference=reference,
+            ref=ref,
             payload=payload,
         )
 
@@ -84,6 +84,6 @@ class TestGenerateReference:
         frozen_time = '2021-08-20T15:58:34'
 
         with freeze_time(frozen_time):
-            reference = utils.generate_reference(event)
+            ref = utils.generate_reference(event)
 
-        assert reference == f'20210820155834:{event!s}'
+        assert ref == f'20210820155834:{event!s}'
