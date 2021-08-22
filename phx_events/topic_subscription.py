@@ -20,6 +20,6 @@ class TopicSubscribeResult:
 
 @dataclass()
 class TopicRegistration:
-    connection_ref: str
     status_updated_event: Event
+    connection_ref: Optional[str] = None
     status: Optional[TopicSubscribeResult] = None
