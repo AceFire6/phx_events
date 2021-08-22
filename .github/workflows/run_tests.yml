@@ -11,6 +11,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
@@ -40,7 +42,15 @@ jobs:
 
     - name: Run pytest
       id: pytest
-      run: pytest -n=2 --cov=phx_event/ --cov-report= --cov-report=xml --maxfail=2 --disable-warnings
+      run: >-
+        pytest
+        -p "no:hypothesispytest"
+        -n=2
+        --cov=phx_events/
+        --cov-report=
+        --cov-report=xml
+        --maxfail=2
+        --disable-warnings
 
     - name: Record Diff Coverage
       id: diff-coverage
@@ -48,7 +58,7 @@ jobs:
       run: |
         echo 'DIFF_COVERAGE<<EOF' >> "$GITHUB_ENV"
         # shellcheck disable=SC2005
-        echo "$(diff-cover coverage.xml --compare-branch=${{ github.base_ref }} --fail-under 100 2>&1)" >> "$GITHUB_ENV"
+        echo "$(diff-cover coverage.xml --fail-under 100 2>&1)" >> "$GITHUB_ENV"
         echo 'EOF' >> "$GITHUB_ENV"
 
     - name: Add Diff Coverage Comment - Missing Coverage
