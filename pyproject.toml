@@ -1,0 +1,42 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "phx-events"
+authors = [{name = "Jethro Muller", email = "git@jethromuller.co.za"}]
+requires-python = ">=3.8,<4"
+readme = "README.md"
+keywords = [
+    "asyncio",
+    "channels",
+    "phoenix",
+    "websockets",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Web Environment",
+    "Framework :: AsyncIO",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+]
+dynamic = ["version", "description"]
+dependencies = [
+    "environs ~= 9.3",
+    "orjson ~= 3.6",
+    "websockets ~= 9.1",
+]
+
+[project.license]
+file = "LICENSE"
+
+[project.urls]
+Home = "https://jethromuller.co.za/"
+Source = "https://github.com/AceFire6/phx_event"
+
+[tool.flit.module]
+name = "phx_events"
