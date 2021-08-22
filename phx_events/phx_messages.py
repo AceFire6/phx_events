@@ -6,7 +6,7 @@ from typing import Any, NewType, Optional, Protocol, TYPE_CHECKING, Union
 
 
 if TYPE_CHECKING:
-    from phx_events.channels_client import PHXChannelsClient
+    from phx_events.client import PHXChannelsClient
 
 
 Topic = NewType('Topic', str)

@@ -22,7 +22,7 @@ pip install -r requirements/core.txt
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
 
-from phx_events.channels_client import PHXChannelsClient
+from phx_events.client import PHXChannelsClient
 from phx_events.phx_messages import ChannelMessage, Event, Topic
 
 
@@ -50,6 +50,7 @@ async def main() -> None:
             client.register_topic_subscription(Topic('topic:subtopic'))
 
             await client.start_processing(pool)
+
 
 if __name__ == '__main__':
     asyncio.run(main(), debug=True)
