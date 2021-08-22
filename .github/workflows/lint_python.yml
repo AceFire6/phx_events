@@ -3,7 +3,7 @@ name: Lint Pyton
 on:
   pull_request:
     paths:
-      - '*.py'
+      - '**.py'
 
 concurrency:
   group: lint-python-${{ github.ref }}
