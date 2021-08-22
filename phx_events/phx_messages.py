@@ -2,15 +2,15 @@ import asyncio
 from dataclasses import dataclass
 from enum import Enum, unique
 from functools import cached_property
-from typing import Any, Callable, Coroutine, NewType, Optional, TYPE_CHECKING, Union
+from typing import Any, Callable, Coroutine, Optional, TYPE_CHECKING, Union
 
 
 if TYPE_CHECKING:
     from phx_events.channels_client import PHXChannelsClient
 
 
-Topic = NewType('Topic', str)
-Event = NewType('Event', str)
+Topic = str
+Event = str
 ChannelEvent = Union['PHXEvent', Event]
 ChannelMessage = Union['PHXMessage', 'PHXEventMessage']
 
