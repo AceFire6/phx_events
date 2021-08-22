@@ -14,7 +14,7 @@ def parse_event(event: ChannelEvent) -> ChannelEvent:
 def make_message(
     event: ChannelEvent,
     topic: Topic,
-    reference: Optional[str] = None,
+    ref: Optional[str] = None,
     payload: Optional[dict[str, Any]] = None,
 ) -> ChannelMessage:
     if payload is None:
@@ -22,9 +22,9 @@ def make_message(
 
     processed_event = parse_event(event)
     if isinstance(processed_event, PHXEvent):
-        return PHXEventMessage(event=processed_event, topic=topic, ref=reference, payload=payload)
+        return PHXEventMessage(event=processed_event, topic=topic, ref=ref, payload=payload)
     else:
-        return PHXMessage(event=processed_event, topic=topic, ref=reference, payload=payload)
+        return PHXMessage(event=processed_event, topic=topic, ref=ref, payload=payload)
 
 
 def generate_reference(event: ChannelEvent) -> str:
