@@ -2,7 +2,7 @@ import asyncio
 from dataclasses import dataclass
 from enum import Enum, unique
 from functools import cached_property
-from typing import Any, Callable, Coroutine, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, Protocol, TYPE_CHECKING, Union
 
 
 if TYPE_CHECKING:
@@ -14,9 +14,18 @@ Event = str
 ChannelEvent = Union['PHXEvent', Event]
 ChannelMessage = Union['PHXMessage', 'PHXEventMessage']
 
-EventHandlerFunction = Callable[['PHXMessage', 'PHXChannelsClient'], Coroutine[Any, Any, None]]
-PHXEventHandlerFunction = Callable[['PHXEventMessage', 'PHXChannelsClient'], Coroutine[Any, Any, None]]
-ChannelHandlerFunction = Union[EventHandlerFunction, PHXEventHandlerFunction]
+
+class ExecutorHandler(Protocol):
+    def __call__(self, __message: Union['PHXMessage', 'PHXEventMessage'], __client: 'PHXChannelsClient') -> None:
+        ...
+
+
+class CoroutineHandler(Protocol):
+    async def __call__(self, __message: Union['PHXMessage', 'PHXEventMessage'], __client: 'PHXChannelsClient') -> None:
+        ...
+
+
+ChannelHandlerFunction = Union[ExecutorHandler, CoroutineHandler]
 
 
 @dataclass()
