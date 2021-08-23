@@ -1,5 +1,9 @@
 # PHX Events
 
+![PyPI](https://img.shields.io/pypi/v/phx_events)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/phx_events)
+![GitHub](https://img.shields.io/github/license/AceFire6/phx_events)
+
 [![Test PHX Events](https://github.com/AceFire6/phx_events/actions/workflows/run_tests.yml/badge.svg)](https://github.com/AceFire6/phx_events/actions/workflows/run_tests.yml)
 [![Lint Python](https://github.com/AceFire6/phx_events/actions/workflows/lint_python.yml/badge.svg)](https://github.com/AceFire6/phx_events/actions/workflows/lint_python.yml)
 [![Lint Github Workflows](https://github.com/AceFire6/phx_events/actions/workflows/lint_workflows.yml/badge.svg)](https://github.com/AceFire6/phx_events/actions/workflows/lint_workflows.yml)
