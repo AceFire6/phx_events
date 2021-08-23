@@ -8,6 +8,8 @@ on:
 jobs:
   publish-on-pypi:
     runs-on: ubuntu-latest
+    environment:
+      name: Publish
 
     steps:
     - uses: actions/checkout@v2
@@ -23,4 +25,8 @@ jobs:
         python -m pip install -r requirements/core.txt -r requirements/dist.txt
 
     - name: Publish to PyPI
+      env:
+        FLIT_INDEX_URL: ${{ secrets.FLIT_INDEX_URL }}
+        FLIT_USERNAME: ${{ secrets.FLIT_USERNAME }}
+        FLIT_PASSWORD: ${{ secrets.FLIT_PASSWORD }}
       run: python -m flit publish
