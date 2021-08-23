@@ -1,5 +1,3 @@
-"""AsyncIO Phoenix Channels client that supports running handler functions (coroutines or normal functions)
- in a custom executor
- """
+"""AsyncIO Phoenix Channels client for fast asynchronous message handling"""
 
-__version__ = '0.1.2'
+__version__ = '0.2.0'
