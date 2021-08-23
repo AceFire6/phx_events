@@ -68,6 +68,15 @@ if __name__ == '__main__':
 
 This project uses [`pip-tools`](https://github.com/jazzband/pip-tools/) to manage dependencies.
 
+Before contributing ensure you agree to the [DCO](https://developercertificate.org/).
+Commits contributed to this project need to be signed in `git`.
+
+This can be done as follows (**Note** `-s` is a shortcut for `--signoff`) :
+
+```shell
+git commit --signoff
+```
+
 ### 1. Create a virtualenv
 
 Note: Creating the virtualenv can be done however you want. We will assume you've done created a new
