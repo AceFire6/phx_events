@@ -1,0 +1,8 @@
+mkautodoc
+mkdocs
+mkdocs-ezlinks-plugin
+mkdocs-git-revision-date-localized-plugin
+mkdocs-htmlproofer-plugin
+mkdocs-include-markdown-plugin
+mkdocs-material
+mkdocs-section-index
