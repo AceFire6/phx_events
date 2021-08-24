@@ -2,10 +2,7 @@ name: Build & Release Docs to GH Pages
 
 on:
   push:
-    tags-ignore:
-      - v*
-    paths:
-      - 'docs/**'
+    branches: [ main ]
 
 concurrency:
   group: docs-${{ github.ref }}
