@@ -5,4 +5,19 @@
          <lastmod>2021-08-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
+    <url>
+         <loc>None</loc>
+         <lastmod>2021-08-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://acefire6.github.io/phx_events/0.2/api/</loc>
+         <lastmod>2021-08-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://acefire6.github.io/phx_events/0.2/license/</loc>
+         <lastmod>2021-08-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
 </urlset>
