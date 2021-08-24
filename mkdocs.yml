@@ -3,6 +3,7 @@ site_url: "https://acefire6.github.io/phx_events/"
 site_author: "Jethro Muller"
 site_description: "Documentation for phx-events the Python 3 AsyncIO Phoenix Channels client"
 repo_url: "https://github.com/AceFire6/phx_events/"
+edit_uri: "edit/main/docs/"
 use_directory_urls: true
 copyright: "©2021 Jethro Muller"
 
