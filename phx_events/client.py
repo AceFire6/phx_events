@@ -12,7 +12,6 @@ from urllib.parse import urlencode
 import orjson
 from websockets import client, exceptions
 
-from phx_events import settings
 from phx_events.async_logger import async_logger
 from phx_events.exceptions import PHXTopicTooManyRegistrationsError
 from phx_events.phx_messages import (
@@ -41,9 +40,14 @@ class PHXChannelsClient:
     _registration_queue: Queue
     _topic_registration_task: Optional[Task]
 
-    def __init__(self, channel_auth_token: Optional[str] = None, event_loop: Optional[AbstractEventLoop] = None):
+    def __init__(
+        self,
+        channel_socket_url: str,
+        channel_auth_token: Optional[str] = None,
+        event_loop: Optional[AbstractEventLoop] = None,
+    ):
         self.logger = async_logger.getChild(__name__)
-        self.channel_socket_url = settings.PHX_WEBSOCKET_URL
+        self.channel_socket_url = channel_socket_url
         # Set up auth if it's required
         if channel_auth_token is not None:
             self.channel_socket_url += f'?{urlencode({"token": channel_auth_token})}'
