@@ -14,21 +14,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
         python-version: 3.9
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip setuptools wheel
-        python -m pip install -r requirements/docs.txt
-        # Install project for mkautodocs
-        python -m pip install .
-
-    - name: Get Current Version
-      run: echo "VERSION=$(python -c 'import phx_events;print(phx_events.__version__.rsplit(".", 1)[0]);')" >> "$GITHUB_ENV"
-
-    - name: Build & Push Latest Documentation
-      run: mike deploy --push --update-aliases ${{ env.VERSION }} latest
+    - name: Publish Latest Documentation
+      uses: ./.github/actions/publish_docs/
+      with:
+        alias_label: latest
