@@ -5,5 +5,6 @@ mkdocs-ezlinks-plugin
 mkdocs-git-revision-date-localized-plugin
 mkdocs-htmlproofer-plugin
 mkdocs-include-markdown-plugin
+mkdocs-literate-nav
 mkdocs-material
 mkdocs-section-index

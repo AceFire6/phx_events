@@ -23,6 +23,5 @@ plugins:
   - ezlinks:
       warn_ambiguities: True
   - section-index
-
-nav:
-  - Home: index.md
+  - literate-nav:
+      nav_file: NAV.md
