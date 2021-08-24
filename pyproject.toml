@@ -35,6 +35,7 @@ file = "LICENSE"
 
 [project.urls]
 Source = "https://github.com/AceFire6/phx_events/"
+Documentation = "https://acefire6.github.io/phx_events/"
 
 [tool.flit.module]
 name = "phx_events"
