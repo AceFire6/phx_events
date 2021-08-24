@@ -12,10 +12,6 @@ jobs:
   build-and-push-docs:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: docs/
-
     steps:
     - uses: actions/checkout@v2
 
