@@ -25,7 +25,6 @@ classifiers = [
 ]
 dynamic = ["version", "description"]
 dependencies = [
-    "environs ~= 9.3",
     "orjson ~= 3.6",
     "websockets ~= 9.1",
 ]
