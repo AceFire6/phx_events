@@ -10,6 +10,9 @@ copyright: "©2021 Jethro Muller"
 theme:
   name: material
 
+extra_css:
+  - css/autodoc.css
+
 markdown_extensions:
   - smarty
   - admonition
