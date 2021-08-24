@@ -29,3 +29,25 @@ jobs:
         FLIT_USERNAME: ${{ secrets.FLIT_USERNAME }}
         FLIT_PASSWORD: ${{ secrets.FLIT_PASSWORD }}
       run: python -m flit publish
+
+  publish-stable-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install -r requirements/docs.txt
+
+      - name: Get Current Version
+        run: echo "VERSION=$(python -c 'import phx_events;print(phx_events.__version__.rsplit(".", 1)[0]);')" >> "$GITHUB_ENV"
+
+      - name: Build & Push Stable Documentation
+        run: mike deploy --push --update-aliases ${{ env.VERSION }} stable
