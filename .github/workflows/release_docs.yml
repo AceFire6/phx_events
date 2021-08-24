@@ -2,6 +2,8 @@ name: Build & Release Docs to GH Pages
 
 on:
   push:
+    tags-ignore:
+      - v*
     paths:
       - 'docs/**'
 
@@ -30,5 +32,8 @@ jobs:
         python -m pip install --upgrade pip setuptools wheel
         python -m pip install -r requirements/docs.txt
 
-    - name: Build & Push Documentation
-      run: mkdocs gh-deploy
+    - name: Get Current Version
+      run: echo "VERSION=$(python -c 'import phx_events;print(phx_events.__version__.rsplit(".", 1)[0]);')" >> "$GITHUB_ENV"
+
+    - name: Build & Push Latest Documentation
+      run: mike deploy --push --update-aliases ${{ env.VERSION }} latest
