@@ -11,6 +11,8 @@
 PHX Events is an AsyncIO library to set up a websocket connection with 
 [Phoenix Channels](https://phoenixframework.readme.io/docs/channels) in Python 3.9+.
 
+Check out the [`phx_event` documentation](https://acefire6.github.io/phx_events/stable/)
+
 ## Installing PHX Events
 
 ### From Pip
