@@ -1,0 +1,33 @@
+name: 'Publish Project Docus'
+description: 'Publish Project Documentation to GH Pages'
+
+inputs:
+  alias_label:
+    description: 'The alias to setup for the current version'
+    required: true
+
+runs:
+  using: composite
+
+  steps:
+  - name: Install dependencies
+    shell: bash
+    run: |
+      python -m pip install --upgrade pip setuptools wheel
+      python -m pip install -r requirements/docs.txt
+      # Install project for mkautodocs
+      python -m pip install .
+
+  - name: Get Current Version
+    shell: bash
+    run: echo "VERSION=$(python -c 'import phx_events;print(phx_events.__version__.rsplit(".", 1)[0]);')" >> "$GITHUB_ENV"
+
+  - name: Set GHA Git Config
+    shell: bash
+    run: |
+      git config --global user.email "github-action@users.noreply.github.com"
+      git config --global user.name "GitHub Action[bot]"
+
+  - name: Build & Push ${{ inputs.alias_label }} Documentation
+    shell: bash
+    run: mike deploy --push --update-aliases ${{ env.VERSION }} ${{ inputs.alias_label }}
