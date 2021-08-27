@@ -15,6 +15,7 @@ isort
 mypy
 pep8-naming
 pytest
+pytest-asyncio
 pytest-cov
 pytest-xdist
 types-freezegun
