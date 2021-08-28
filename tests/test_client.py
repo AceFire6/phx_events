@@ -64,3 +64,50 @@ class TestPHXChannelsClientAExit:
             await phx_client.__aexit__()
 
         mock_shutdown.assert_called_with('Leaving PHXChannelsClient context')
+
+
+class TestPHXChannelsClientSendMessage:
+    # TODO: Add this when websocket mock is figured out
+    pass
+
+
+class TestPHXChannelsClientParseMessage:
+    pass
+
+
+class TestPHXChannelsClientEventProcessor:
+    # TODO: Add this when websocket mock is figured out
+    pass
+
+
+class TestPHXChannelsClientShutdown:
+    pass
+
+
+class TestPHXChannelsClientRegisterEventHandler:
+    pass
+
+
+class TestPHXChannelsClientProcessTopicRegistrationResponses:
+    # TODO: Requires queue logic
+    pass
+
+
+class TestPHXChannelsClientRegisterTopicSubscription:
+    # TODO: Requires event logic
+    pass
+
+
+class TestPHXChannelsClientProcessWebsocketMessages:
+    # TODO: Add this when websocket mock is figured out
+    pass
+
+
+class TestPHXChannelsClientSubscribeToRegisteredTopics:
+    # TODO: Add this when websocket mock is figured out
+    pass
+
+
+class TestPHXChannelsClientStartProcessing:
+    # TODO: Add this when websocket mock is figured out
+    pass
