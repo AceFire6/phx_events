@@ -21,7 +21,7 @@ class TestPHXChannelsClientAExit:
     async def test_calls_shutdown_with_correct_reason(self):
         phx_client = PHXChannelsClient('ws://web.socket/url/')
 
-        with patch(phx_client.shutdown) as mock_shutdown:
+        with patch.object(phx_client, 'shutdown') as mock_shutdown:
             await phx_client.__aexit__()
 
         mock_shutdown.assert_called_with('Leaving PHXChannelsClient context')
