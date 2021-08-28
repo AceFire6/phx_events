@@ -1,5 +1,4 @@
 import asyncio
-from unittest.mock import patch
 from urllib.parse import urlencode
 
 import pytest
@@ -45,69 +44,3 @@ class TestPHXChannelsClientInit:
         specified_loop_client = PHXChannelsClient(self.socket_url, event_loop=event_loop)
 
         assert specified_loop_client._loop == event_loop
-
-
-class TestPHXChannelsClientAEnter:
-    async def test_returns_self_when_using_as_with_context_manager(self):
-        phx_client = PHXChannelsClient('ws://web.socket/url/')
-
-        async with phx_client as test_phx_client:
-            assert isinstance(test_phx_client, PHXChannelsClient)
-            assert phx_client == test_phx_client
-
-
-class TestPHXChannelsClientAExit:
-    async def test_calls_shutdown_with_correct_reason(self):
-        phx_client = PHXChannelsClient('ws://web.socket/url/')
-
-        with patch(phx_client.shutdown) as mock_shutdown:
-            await phx_client.__aexit__()
-
-        mock_shutdown.assert_called_with('Leaving PHXChannelsClient context')
-
-
-class TestPHXChannelsClientSendMessage:
-    # TODO: Add this when websocket mock is figured out
-    pass
-
-
-class TestPHXChannelsClientParseMessage:
-    pass
-
-
-class TestPHXChannelsClientEventProcessor:
-    # TODO: Add this when websocket mock is figured out
-    pass
-
-
-class TestPHXChannelsClientShutdown:
-    pass
-
-
-class TestPHXChannelsClientRegisterEventHandler:
-    pass
-
-
-class TestPHXChannelsClientProcessTopicRegistrationResponses:
-    # TODO: Requires queue logic
-    pass
-
-
-class TestPHXChannelsClientRegisterTopicSubscription:
-    # TODO: Requires event logic
-    pass
-
-
-class TestPHXChannelsClientProcessWebsocketMessages:
-    # TODO: Add this when websocket mock is figured out
-    pass
-
-
-class TestPHXChannelsClientSubscribeToRegisteredTopics:
-    # TODO: Add this when websocket mock is figured out
-    pass
-
-
-class TestPHXChannelsClientStartProcessing:
-    # TODO: Add this when websocket mock is figured out
-    pass
