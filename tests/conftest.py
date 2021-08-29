@@ -1,15 +1,16 @@
-# If this is removed then remove the additional options in
-# the pytest.ini file
-from unittest.mock import MagicMock, patch
+from typing import Any, AsyncIterator
+from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
 
+# If this is removed then remove the additional options in
+# the pytest.ini file
 pytest_plugins = ['hypothesis.extra.pytestplugin']
 
 
 @pytest.fixture()
-def mock_websocket_client():
+def mock_websocket_client() -> MagicMock:
     with patch('phx_events.client.client', autospec=True) as mocked_websocket:
         yield mocked_websocket
 
@@ -21,7 +22,7 @@ async def mock_websocket_connection(mock_websocket_client):
 
 
 @pytest.fixture()
-def mock_executor_pool():
+def mock_executor_pool() -> MagicMock:
     from concurrent.futures import ThreadPoolExecutor
 
     mock_executor = MagicMock(ThreadPoolExecutor, autospec=True)
@@ -29,6 +30,6 @@ def mock_executor_pool():
 
 
 @pytest.fixture()
-def mock_executor_contextmanager(mock_executor_pool):
+def mock_executor_contextmanager(mock_executor_pool) -> MagicMock:
     with mock_executor_pool as mock_pool:
         yield mock_pool
