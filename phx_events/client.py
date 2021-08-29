@@ -97,6 +97,7 @@ class PHXChannelsClient:
         """
         # Make all tasks wait until the _client_start_event is set
         # This prevents trying to do any processing until we want the "workers" to start
+        self.logger.debug(f'{event} Worker - Waiting for client start!')
         await self._client_start_event.wait()
 
         self.logger.debug(f'{event} Worker - Started!')
