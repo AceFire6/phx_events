@@ -172,7 +172,7 @@ class PHXChannelsClient:
                 queue=Queue(),
                 default_handlers=[],
                 topic_handlers={},
-                task=asyncio.create_task(event_coroutine),
+                task=self._loop.create_task(event_coroutine),
             )
 
         handler_config = self._event_handler_config[event]
