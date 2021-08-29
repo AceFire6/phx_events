@@ -231,7 +231,7 @@ class PHXChannelsClient:
                 # Error happened in Elixir
                 self.logger.error(f'Got Phoenix event {event} shutting down - {phx_message=}')
                 # Hard exit if the server closes or errors
-                raise exceptions.ConnectionClosedError(code=500, reason='Upstream error')
+                raise exceptions.ConnectionClosedError(code=1011, reason='Upstream error')
 
             # Push message into registration queue if appropriate
             if topic_registration_config := self._topic_registration_status.get(phx_message.topic):  # noqa: SIM102
