@@ -7,7 +7,7 @@ from hypothesis.strategies import composite, SearchStrategy
 PHX_EVENTS = ['phx_close', 'phx_error', 'phx_join', 'phx_reply', 'phx_leave']
 message_payload = st.dictionaries(
     keys=st.text(),
-    values=st.text() | st.booleans() | st.floats() | st.integers() | st.decimals() | st.datetimes(),
+    values=st.text() | st.booleans() | st.floats(allow_nan=False, allow_infinity=False) | st.integers() | st.decimals(allow_infinity=False, allow_nan=False) | st.datetimes(),  # noqa: E501
 )
 
 
