@@ -9,9 +9,9 @@ from types import TracebackType
 from typing import Awaitable, cast, Optional, Type, Union
 from urllib.parse import urlencode
 
-import orjson
 from websockets import client, exceptions
 
+from phx_events import json_handler
 from phx_events.async_logger import async_logger
 from phx_events.exceptions import PHXTopicTooManyRegistrationsError
 from phx_events.phx_messages import (
@@ -78,14 +78,14 @@ class PHXChannelsClient:
 
     async def _send_message(self, websocket: client.WebSocketClientProtocol, message: ChannelMessage) -> None:
         self.logger.debug(f'Serialising {message=} to JSON')
-        json_message = orjson.dumps(message)
+        json_message = json_handler.dumps(message)
 
         self.logger.debug(f'Sending {json_message=}')
         await websocket.send(json_message)
 
     def _parse_message(self, socket_message: Union[str, bytes]) -> ChannelMessage:
         self.logger.debug(f'Got message - {socket_message=}')
-        message_dict = orjson.loads(socket_message)
+        message_dict = json_handler.loads(socket_message)
 
         self.logger.debug(f'Decoding message dict - {message_dict=}')
         return make_message(**message_dict)
