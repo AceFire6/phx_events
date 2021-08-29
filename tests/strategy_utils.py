@@ -5,9 +5,16 @@ from hypothesis.strategies import composite, SearchStrategy
 
 
 PHX_EVENTS = ['phx_close', 'phx_error', 'phx_join', 'phx_reply', 'phx_leave']
+
+safe_float_strategy = st.floats(allow_nan=False, allow_infinity=False)
+safe_decimal_strategy = st.decimals(allow_nan=False, allow_infinity=False)
+# These are the min and max values for a 64bit integer - orjson can't handle bigger ints
+# See here: https://github.com/ijl/orjson#int
+safe_int_strategy = st.integers(min_value=-9223372036854775807, max_value=18446744073709551615)
+
 message_payload = st.dictionaries(
     keys=st.text(),
-    values=st.text() | st.booleans() | st.floats(allow_nan=False, allow_infinity=False) | st.integers() | st.decimals(allow_infinity=False, allow_nan=False) | st.datetimes(),  # noqa: E501
+    values=st.text() | st.booleans() | safe_float_strategy | safe_int_strategy | safe_decimal_strategy | st.datetimes(),
 )
 
 
