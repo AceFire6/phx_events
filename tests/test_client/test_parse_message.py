@@ -1,13 +1,9 @@
 from hypothesis import given
-import pytest
 
 from phx_events import json_handler
 from phx_events.client import PHXChannelsClient
 from phx_events.phx_messages import PHXEvent, PHXEventMessage, PHXMessage
 from tests.strategy_utils import event_strategy, phx_event_strategy
-
-
-pytestmark = pytest.mark.asyncio
 
 
 class TestPHXChannelsClientParseMessage:
