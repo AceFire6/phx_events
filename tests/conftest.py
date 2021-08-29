@@ -9,6 +9,13 @@ import pytest
 pytest_plugins = ['hypothesis.extra.pytestplugin']
 
 
+class MockWebsocketConnection(AsyncMock):
+    async_iter_values: list[Any]
+
+    def __aiter__(self) -> Any:
+        pass
+
+
 @pytest.fixture()
 def mock_websocket_client() -> MagicMock:
     with patch('phx_events.client.client', autospec=True) as mocked_websocket:
@@ -16,8 +23,16 @@ def mock_websocket_client() -> MagicMock:
 
 
 @pytest.fixture()
-async def mock_websocket_connection(mock_websocket_client):
+async def mock_websocket_connection(mock_websocket_client) -> MockWebsocketConnection:
+    async def async_iter(self) -> AsyncIterator[Any]:
+        for item in self.async_iter_values:  # noqa: SIM104
+            yield item
+
     async with mock_websocket_client.connect('ws://test') as client_connection:
+        # Create an async iterator that loops through set values
+        client_connection.async_iter_values = []
+        client_connection.__aiter__ = async_iter
+
         yield client_connection
 
 
