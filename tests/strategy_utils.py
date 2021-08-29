@@ -60,7 +60,7 @@ def phx_event_strategy(
     payload: Optional[SearchStrategy[Optional[dict[str, Any]]]] = None,
 ) -> SearchStrategy[EventDict]:
     if event is None:
-        st.sampled_from(PHX_EVENTS)
+        event = st.sampled_from(PHX_EVENTS)
 
     return channel_event_strategy(topic, event, ref, payload)
 
