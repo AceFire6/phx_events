@@ -3,13 +3,7 @@ from hypothesis import given, strategies as st
 
 from phx_events import utils
 from phx_events.phx_messages import Event, PHXEvent, PHXEventMessage, PHXMessage
-
-
-PHX_EVENTS = ['phx_close', 'phx_error', 'phx_join', 'phx_reply', 'phx_leave']
-message_payload = st.dictionaries(
-    keys=st.text(),
-    values=st.text() | st.booleans() | st.floats() | st.integers() | st.decimals() | st.datetimes(),
-)
+from tests.strategy_utils import channel_event_strategy, event_strategy, phx_event_strategy, PHX_EVENTS
 
 
 class TestParseEvent:
@@ -27,52 +21,37 @@ class TestParseEvent:
 
 
 class TestMakeMessage:
-    @given(
-        event=st.sampled_from(PHX_EVENTS),
-        topic=st.text(),
-        ref=st.text() | st.none(),
-        payload=message_payload,
-    )
-    def test_phx_event_message_returned_for_phx_event(self, event, topic, ref, payload):
+    @given(phx_event_strategy())
+    def test_phx_event_message_returned_for_phx_event(self, phx_event_dict):
         message = utils.make_message(
-            event=event,
-            topic=topic,
-            ref=ref,
-            payload=payload,
+            event=phx_event_dict['event'],
+            topic=phx_event_dict['topic'],
+            ref=phx_event_dict['ref'],
+            payload=phx_event_dict['payload'],
         )
 
         assert isinstance(message, PHXEventMessage)
-        assert message.event == PHXEvent(event)
+        assert message.event == PHXEvent(phx_event_dict['event'])
 
-    @given(
-        event=st.text().filter(lambda x: x not in PHX_EVENTS),
-        topic=st.text(),
-        ref=st.text() | st.none(),
-        payload=message_payload,
-    )
-    def test_phx_message_returned_for_other_events(self, event, topic, ref, payload):
+    @given(event_strategy())
+    def test_phx_message_returned_for_other_events(self, event_dict):
         message = utils.make_message(
-            event=event,
-            topic=topic,
-            ref=ref,
-            payload=payload,
+            event=event_dict['event'],
+            topic=event_dict['topic'],
+            ref=event_dict['ref'],
+            payload=event_dict['payload'],
         )
 
         assert isinstance(message, PHXMessage)
         assert isinstance(message.event, str)
 
-    @given(
-        event=st.text(),
-        topic=st.text(),
-        ref=st.text() | st.none(),
-        payload=st.none(),
-    )
-    def test_none_payload_turned_into_empty_dict(self, event, topic, ref, payload):
+    @given(channel_event_strategy(payload=st.none()))
+    def test_none_payload_turned_into_empty_dict(self, event_dict):
         message = utils.make_message(
-            event=event,
-            topic=topic,
-            ref=ref,
-            payload=payload,
+            event=event_dict['event'],
+            topic=event_dict['topic'],
+            ref=event_dict['ref'],
+            payload=event_dict['payload'],
         )
 
         assert message.payload == {}
