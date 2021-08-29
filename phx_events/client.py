@@ -266,8 +266,7 @@ class PHXChannelsClient:
             return
 
         self.logger.debug('Creating the executor pool to use for processing registered handlers')
-        if executor_pool is None:
-            self._executor_pool = ThreadPoolExecutor()
+        self._executor_pool = executor_pool or ThreadPoolExecutor()
 
         with self._executor_pool as pool:
             self.logger.debug('Connecting to websocket')
