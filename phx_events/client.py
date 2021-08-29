@@ -197,9 +197,11 @@ class PHXChannelsClient:
             # Set the topic status map
             topic_registration = self._topic_registration_status[topic]
             # Set topic status with the message
-            topic_registration.status = TopicSubscribeResult(status, phx_message)
+            topic_registration.result = TopicSubscribeResult(status, phx_message)
             # Notify any waiting tasks that the registration has been finalised and the status can be checked
             topic_registration.status_updated_event.set()
+            # Tell the queue we've finished processing the current task
+            self._registration_queue.task_done()
 
     def register_topic_subscription(self, topic: Topic) -> Event:
         if topic_status := self._topic_registration_status.get(topic):
