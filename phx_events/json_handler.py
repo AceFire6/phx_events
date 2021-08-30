@@ -14,7 +14,7 @@ def decimal_serialiser(_obj: Any) -> float:
 def deep_float_replace(obj: Any) -> Any:
     if isinstance(obj, float):
         return Decimal(str(obj))
-    if isinstance(obj, dict):
+    elif isinstance(obj, dict):
         return {key: deep_float_replace(value) for key, value in obj.items()}
     elif isinstance(obj, list):
         return [deep_float_replace(value) for value in obj]
