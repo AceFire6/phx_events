@@ -17,13 +17,13 @@ class MockWebsocketConnection(AsyncMock):
 
 
 @pytest.fixture()
-def mock_websocket_client() -> MagicMock:
+def mock_websocket_client() -> MagicMock:  # type: ignore[misc]
     with patch('phx_events.client.client', autospec=True) as mocked_websocket:
         yield mocked_websocket
 
 
 @pytest.fixture()
-async def mock_websocket_connection(mock_websocket_client) -> MockWebsocketConnection:
+async def mock_websocket_connection(mock_websocket_client) -> MockWebsocketConnection:  # type: ignore[misc]
     async def async_iter(self) -> AsyncIterator[Any]:
         for item in self.async_iter_values:  # noqa: SIM104
             yield item
@@ -37,7 +37,7 @@ async def mock_websocket_connection(mock_websocket_client) -> MockWebsocketConne
 
 
 @pytest.fixture()
-def mock_executor_pool() -> MagicMock:
+def mock_executor_pool() -> MagicMock:  # type: ignore[misc]
     from concurrent.futures import ThreadPoolExecutor
 
     mock_executor = MagicMock(ThreadPoolExecutor, autospec=True)
@@ -45,6 +45,6 @@ def mock_executor_pool() -> MagicMock:
 
 
 @pytest.fixture()
-def mock_executor_contextmanager(mock_executor_pool) -> MagicMock:
+def mock_executor_contextmanager(mock_executor_pool) -> MagicMock:  # type: ignore[misc]
     with mock_executor_pool as mock_pool:
         yield mock_pool
