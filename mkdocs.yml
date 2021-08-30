@@ -31,7 +31,7 @@ extra:
     provider: mike
 
 extra_css:
-  - css/autodoc.css
+  - css/style.css
 
 markdown_extensions:
   - smarty
@@ -40,7 +40,6 @@ markdown_extensions:
   - pymdownx.superfences
   - toc:
       permalink: "#"
-  - mkautodoc
 
 plugins:
   - search
