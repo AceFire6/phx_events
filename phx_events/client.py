@@ -109,9 +109,10 @@ class PHXChannelsClient:
             message = await event_handler_config.queue.get()
             self.logger.debug(f'{event} Worker - Got {message=}')
 
-            event_handlers: list[ChannelHandlerFunction] = event_handler_config.default_handlers
+            # We run all the default handlers as well as the specific topic handlers
+            event_handlers: list[ChannelHandlerFunction] = event_handler_config.default_handlers.copy()
             if topic_handlers := event_handler_config.topic_handlers.get(message.topic):
-                event_handlers = topic_handlers
+                event_handlers.extend(topic_handlers)
 
             event_tasks = []
             task: Union[Task[None], Awaitable[None]]
