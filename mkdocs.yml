@@ -46,6 +46,22 @@ plugins:
   - include-markdown
   - git-revision-date-localized
   - htmlproofer
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          selection:
+            members: True
+            docstring_style: "google"
+            filters:
+            - "!^_"  # exclude all members starting with _
+            - "^__init__$"  # but always include __init__ modules and methods
+          rendering:
+            show_root_heading: True
+            show_if_no_docstring: True
+      watch:
+        - phx_events/
+
   - ezlinks:
       warn_ambiguities: True
   - section-index
