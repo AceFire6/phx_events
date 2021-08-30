@@ -2,13 +2,33 @@ site_name: "PHX Events Documentation"
 site_url: "https://acefire6.github.io/phx_events/"
 site_author: "Jethro Muller"
 site_description: "Documentation for phx-events the Python 3 AsyncIO Phoenix Channels client"
-repo_url: "https://github.com/AceFire6/phx_events/"
-edit_uri: "edit/main/docs/"
-use_directory_urls: true
 copyright: "©2021 Jethro Muller"
 
+repo_url: "https://github.com/AceFire6/phx_events/"
+edit_uri: "edit/main/docs/"
+
+use_directory_urls: true
 theme:
   name: material
+  custom_dir: overrides
+  palette:
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    primary: blue
+    accent: light blue
+    toggle:
+      icon: material/toggle-switch
+      name: Switch to light mode
+  - media: "(prefers-color-scheme: light)"
+    scheme: default
+    primary: indigo
+    toggle:
+      icon: material/toggle-switch-off-outline
+      name: Switch to dark mode
+
+extra:
+  version:
+    provider: mike
 
 extra_css:
   - css/autodoc.css
@@ -16,7 +36,8 @@ extra_css:
 markdown_extensions:
   - smarty
   - admonition
-  - codehilite
+  - pymdownx.highlight
+  - pymdownx.superfences
   - toc:
       permalink: "#"
   - mkautodoc
