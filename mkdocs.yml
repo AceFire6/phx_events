@@ -17,6 +17,8 @@ markdown_extensions:
   - smarty
   - admonition
   - codehilite
+  - toc:
+      permalink: "#"
   - mkautodoc
 
 plugins:
