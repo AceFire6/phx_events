@@ -17,12 +17,12 @@ ChannelMessage = Union['PHXMessage', 'PHXEventMessage']
 
 class ExecutorHandler(Protocol):
     def __call__(self, __message: Union['PHXMessage', 'PHXEventMessage'], __client: 'PHXChannelsClient') -> None:
-        ...
+        ...  # pragma: no cover
 
 
 class CoroutineHandler(Protocol):
     async def __call__(self, __message: Union['PHXMessage', 'PHXEventMessage'], __client: 'PHXChannelsClient') -> None:
-        ...
+        ...  # pragma: no cover
 
 
 ChannelHandlerFunction = Union[ExecutorHandler, CoroutineHandler]
