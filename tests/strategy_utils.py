@@ -1,7 +1,7 @@
 from typing import Any, Optional, TypedDict
 
 from hypothesis import strategies as st
-from hypothesis.strategies import composite, SearchStrategy
+from hypothesis.strategies import composite, DrawFn, SearchStrategy
 
 
 PHX_EVENTS = ['phx_close', 'phx_error', 'phx_join', 'phx_reply', 'phx_leave']
@@ -27,7 +27,7 @@ class EventDict(TypedDict):
 
 @composite
 def channel_event_strategy(
-    draw,
+    draw: DrawFn,
     topic: Optional[SearchStrategy[str]] = None,
     event: Optional[SearchStrategy[str]] = None,
     ref: Optional[SearchStrategy[str]] = None,
