@@ -132,8 +132,8 @@ class PHXChannelsClient:
             for handler_future in asyncio.as_completed(event_tasks):
                 try:
                     await handler_future
-                except Exception:
-                    self.logger.exception('Error executing handler')
+                except Exception as exception:
+                    self.logger.exception(f'Error executing handler - {exception=}')
 
             # Let the queue know the task is done being processed
             event_handler_config.queue.task_done()
