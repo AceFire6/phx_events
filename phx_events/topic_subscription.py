@@ -22,4 +22,4 @@ class TopicSubscribeResult:
 class TopicRegistration:
     status_updated_event: Event
     connection_ref: Optional[str] = None
-    status: Optional[TopicSubscribeResult] = None
+    result: Optional[TopicSubscribeResult] = None

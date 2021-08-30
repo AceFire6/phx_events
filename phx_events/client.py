@@ -9,9 +9,9 @@ from types import TracebackType
 from typing import Awaitable, cast, Optional, Type, Union
 from urllib.parse import urlencode
 
-import orjson
 from websockets import client, exceptions
 
+from phx_events import json_handler
 from phx_events.async_logger import async_logger
 from phx_events.exceptions import PHXTopicTooManyRegistrationsError
 from phx_events.phx_messages import (
@@ -69,23 +69,23 @@ class PHXChannelsClient:
 
     async def __aexit__(
         self,
-        exc_type: Optional[Type[BaseException]],
-        exc_value: Optional[BaseException],
-        traceback: Optional[TracebackType],
+        exc_type: Optional[Type[BaseException]] = None,
+        exc_value: Optional[BaseException] = None,
+        traceback: Optional[TracebackType] = None,
     ) -> None:
         self.logger.debug('Leaving PHXChannelsClient context')
         self.shutdown('Leaving PHXChannelsClient context')
 
     async def _send_message(self, websocket: client.WebSocketClientProtocol, message: ChannelMessage) -> None:
         self.logger.debug(f'Serialising {message=} to JSON')
-        json_message = orjson.dumps(message)
+        json_message = json_handler.dumps(message)
 
         self.logger.debug(f'Sending {json_message=}')
         await websocket.send(json_message)
 
     def _parse_message(self, socket_message: Union[str, bytes]) -> ChannelMessage:
         self.logger.debug(f'Got message - {socket_message=}')
-        message_dict = orjson.loads(socket_message)
+        message_dict = json_handler.loads(socket_message)
 
         self.logger.debug(f'Decoding message dict - {message_dict=}')
         return make_message(**message_dict)
@@ -97,6 +97,7 @@ class PHXChannelsClient:
         """
         # Make all tasks wait until the _client_start_event is set
         # This prevents trying to do any processing until we want the "workers" to start
+        self.logger.debug(f'{event} Worker - Waiting for client start!')
         await self._client_start_event.wait()
 
         self.logger.debug(f'{event} Worker - Started!')
@@ -108,9 +109,10 @@ class PHXChannelsClient:
             message = await event_handler_config.queue.get()
             self.logger.debug(f'{event} Worker - Got {message=}')
 
-            event_handlers: list[ChannelHandlerFunction] = event_handler_config.default_handlers
+            # We run all the default handlers as well as the specific topic handlers
+            event_handlers: list[ChannelHandlerFunction] = event_handler_config.default_handlers.copy()
             if topic_handlers := event_handler_config.topic_handlers.get(message.topic):
-                event_handlers = topic_handlers
+                event_handlers.extend(topic_handlers)
 
             event_tasks = []
             task: Union[Task[None], Awaitable[None]]
@@ -130,8 +132,8 @@ class PHXChannelsClient:
             for handler_future in asyncio.as_completed(event_tasks):
                 try:
                     await handler_future
-                except Exception:
-                    self.logger.exception('Error executing handler')
+                except Exception as exception:
+                    self.logger.exception(f'Error executing handler - {exception=}')
 
             # Let the queue know the task is done being processed
             event_handler_config.queue.task_done()
@@ -172,7 +174,7 @@ class PHXChannelsClient:
                 queue=Queue(),
                 default_handlers=[],
                 topic_handlers={},
-                task=asyncio.create_task(event_coroutine),
+                task=self._loop.create_task(event_coroutine),
             )
 
         handler_config = self._event_handler_config[event]
@@ -197,9 +199,11 @@ class PHXChannelsClient:
             # Set the topic status map
             topic_registration = self._topic_registration_status[topic]
             # Set topic status with the message
-            topic_registration.status = TopicSubscribeResult(status, phx_message)
+            topic_registration.result = TopicSubscribeResult(status, phx_message)
             # Notify any waiting tasks that the registration has been finalised and the status can be checked
             topic_registration.status_updated_event.set()
+            # Tell the queue we've finished processing the current task
+            self._registration_queue.task_done()
 
     def register_topic_subscription(self, topic: Topic) -> Event:
         if topic_status := self._topic_registration_status.get(topic):
@@ -229,7 +233,7 @@ class PHXChannelsClient:
                 # Error happened in Elixir
                 self.logger.error(f'Got Phoenix event {event} shutting down - {phx_message=}')
                 # Hard exit if the server closes or errors
-                raise exceptions.ConnectionClosedError(code=500, reason='Upstream error')
+                raise exceptions.ConnectionClosedError(code=1011, reason='Upstream error')
 
             # Push message into registration queue if appropriate
             if topic_registration_config := self._topic_registration_status.get(phx_message.topic):  # noqa: SIM102
@@ -266,9 +270,7 @@ class PHXChannelsClient:
             return
 
         self.logger.debug('Creating the executor pool to use for processing registered handlers')
-        self._executor_pool = ThreadPoolExecutor()
-        if executor_pool is not None:
-            self._executor_pool = executor_pool
+        self._executor_pool = executor_pool or ThreadPoolExecutor()
 
         with self._executor_pool as pool:
             self.logger.debug('Connecting to websocket')
