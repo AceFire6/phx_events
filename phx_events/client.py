@@ -29,6 +29,18 @@ from phx_events.utils import make_message
 
 
 class PHXChannelsClient:
+    """Provides the main functionality for running a client with asynchronous handlers
+
+    This class should generally be initialised and used as an asynchronous context manager.
+
+    Inside the `async with` block you should register for topics using `PHXChannelsClient.register_topic_subscription`
+    and register event handlers using `PHXChannelsClient.register_event_handler`.
+
+    Event handler functions can be `async` or normal functions. Async functions are run in the event loop
+    `PHXChannelsClient._loop` and normal functions are run using the provided executor pool
+     (`ThreadPoolExecutor` by default).
+    """
+
     channel_socket_url: str
     logger: Logger
 
