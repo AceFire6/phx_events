@@ -16,7 +16,7 @@ coverage==5.5
     # via
     #   -r dev.in
     #   pytest-cov
-diff-cover==6.3.4
+diff-cover==6.3.5
     # via -r dev.in
 execnet==1.9.0
     # via pytest-xdist
