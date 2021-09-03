@@ -93,7 +93,7 @@ pygments==2.10.0
     # via diff-cover
 pyparsing==2.4.7
     # via packaging
-pytest==6.2.4
+pytest==6.2.5
     # via
     #   -r dev.in
     #   pytest-asyncio
