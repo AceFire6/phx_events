@@ -54,7 +54,7 @@ mkdocs==1.2.2
     #   mkdocs-section-index
 mkdocs-ezlinks-plugin==0.1.12
     # via -r docs.in
-mkdocs-git-revision-date-localized-plugin==0.9.2
+mkdocs-git-revision-date-localized-plugin==0.9.3
     # via -r docs.in
 mkdocs-htmlproofer-plugin==0.6.0
     # via -r docs.in
