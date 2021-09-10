@@ -16,12 +16,26 @@ ChannelMessage = Union['PHXMessage', 'PHXEventMessage']
 
 
 class ExecutorHandler(Protocol):
+    """Protocol describing a handler that will be called using the provided executor pool"""
+
     def __call__(self, __message: Union['PHXMessage', 'PHXEventMessage'], __client: 'PHXChannelsClient') -> None:
+        """
+        Args:
+            __message (Union[PHXMessage, PHXEventMessage]): The message the handler should process
+            __client (PHXChannelsClient): The client instance
+        """
         ...  # pragma: no cover
 
 
 class CoroutineHandler(Protocol):
+    """Protocol describing a handler that will be run as a task in the event loop"""
+
     async def __call__(self, __message: Union['PHXMessage', 'PHXEventMessage'], __client: 'PHXChannelsClient') -> None:
+        """
+        Args:
+            __message (Union[PHXMessage, PHXEventMessage]): The message the handler should process
+            __client (PHXChannelsClient): The client instance
+        """
         ...  # pragma: no cover
 
 
@@ -30,6 +44,16 @@ ChannelHandlerFunction = Union[ExecutorHandler, CoroutineHandler]
 
 @dataclass()
 class EventHandlerConfig:
+    """
+    Args:
+        queue (asyncio.Queue): The queue that messages are passed into and the event handlers are fed from
+        default_handlers (list[ChannelHandlerFunction]): Handler functions that should always be run for the specified
+                                                         event.
+        topic_handlers (dict[Topic, list[ChannelHandlerFunction]]): Handler functions that should be run only for the
+                                                                    topics specified in the mapping.
+        task (asyncio.Task): The task that consumes off the `queue` and determines which `default_handlers` and
+                             `topic_handlers` to run.
+    """
     queue: asyncio.Queue[ChannelMessage]
     default_handlers: list[ChannelHandlerFunction]
     topic_handlers: dict[Topic, list[ChannelHandlerFunction]]
@@ -38,6 +62,7 @@ class EventHandlerConfig:
 
 @unique
 class PHXEvent(Enum):
+    """Phoenix Channels admin events"""
     close = 'phx_close'
     error = 'phx_error'
     join = 'phx_join'

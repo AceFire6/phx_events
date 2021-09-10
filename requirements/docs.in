@@ -1,6 +1,6 @@
 mike
-mkautodoc
 mkdocs
+mkdocstrings
 mkdocs-ezlinks-plugin
 mkdocs-git-revision-date-localized-plugin
 mkdocs-htmlproofer-plugin
