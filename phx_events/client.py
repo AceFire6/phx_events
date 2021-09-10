@@ -36,11 +36,11 @@ class PHXChannelsClient:
     Inside the `async with` block you should register for topics using `PHXChannelsClient.register_topic_subscription`
     and register event handlers using `PHXChannelsClient.register_event_handler`.
 
-    Event handler functions can be `async` or normal functions. Async functions are run in the event loop
-    `PHXChannelsClient._loop` and normal functions are run using the provided executor pool
-     (`ThreadPoolExecutor` by default).
-    """
+    Event handler functions can be `async` or normal functions.
+    * Async functions are run in the event loop `PHXChannelsClient._loop`
+    * Normal functions are run using the provided executor pool (`ThreadPoolExecutor` by default)
 
+    """
     channel_socket_url: str
     logger: Logger
 
