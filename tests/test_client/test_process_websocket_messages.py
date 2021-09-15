@@ -1,10 +1,10 @@
 import logging
 
 import pytest
-from websockets.exceptions import ConnectionClosedError, ConnectionClosedOK
 
 from phx_events import json_handler
 from phx_events.client import PHXChannelsClient
+from phx_events.exceptions import TopicClosedError
 from phx_events.phx_messages import Event, PHXEvent, Topic
 from phx_events.utils import make_message
 
@@ -21,14 +21,14 @@ class TestPHXChannelsClientProcessWebsocketMessages:
         close_message = json_handler.dumps(make_message(PHXEvent.close, self.topic))
         mock_websocket_connection.async_iter_values.append(close_message)
 
-        with pytest.raises(ConnectionClosedOK, match=r'code = 1000 \(OK\), reason = Upstream closed'):
+        with pytest.raises(TopicClosedError, match=r"'topic:subtopic', 'Upstream closed'"):
             await self.phx_client.process_websocket_messages(mock_websocket_connection)
 
     async def test_raises_exception_on_phx_error_event(self, mock_websocket_connection):
         error_message = json_handler.dumps(make_message(PHXEvent.error, self.topic))
         mock_websocket_connection.async_iter_values.append(error_message)
 
-        with pytest.raises(ConnectionClosedError, match=r'code = 1011 \(unexpected error\), reason = Upstream error'):
+        with pytest.raises(TopicClosedError, match=r"'topic:subtopic', 'Upstream error'"):
             await self.phx_client.process_websocket_messages(mock_websocket_connection)
 
     async def test_puts_message_in_topic_registration_queue_if_appropriate(self, mock_websocket_connection):
