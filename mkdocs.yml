@@ -7,6 +7,7 @@ copyright: "©2021 Jethro Muller"
 repo_url: "https://github.com/AceFire6/phx_events/"
 edit_uri: "edit/main/docs/"
 
+docs_dir: docs
 use_directory_urls: true
 theme:
   name: material
