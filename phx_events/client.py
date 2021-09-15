@@ -9,11 +9,11 @@ from types import TracebackType
 from typing import Awaitable, cast, Optional, Type, Union
 from urllib.parse import urlencode
 
-from websockets import client, exceptions
+from websockets import client
 
 from phx_events import json_handler
 from phx_events.async_logger import async_logger
-from phx_events.exceptions import PHXTopicTooManyRegistrationsError
+from phx_events.exceptions import PHXTopicTooManyRegistrationsError, TopicClosedError
 from phx_events.phx_messages import (
     ChannelEvent,
     ChannelHandlerFunction,
@@ -239,13 +239,13 @@ class PHXChannelsClient:
 
             if event == PHXEvent.close:
                 self.logger.info(f'Got Phoenix event {event} shutting down - {phx_message=}')
-                raise exceptions.ConnectionClosedOK(code=1000, reason='Upstream closed')
+                raise TopicClosedError(topic=phx_message.topic, reason='Upstream closed')
 
             if event == PHXEvent.error:
                 # Error happened in Elixir
                 self.logger.error(f'Got Phoenix event {event} shutting down - {phx_message=}')
                 # Hard exit if the server closes or errors
-                raise exceptions.ConnectionClosedError(code=1011, reason='Upstream error')
+                raise TopicClosedError(topic=phx_message.topic, reason='Upstream error')
 
             # Push message into registration queue if appropriate
             if topic_registration_config := self._topic_registration_status.get(phx_message.topic):  # noqa: SIM102
