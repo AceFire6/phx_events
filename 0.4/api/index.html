@@ -42,7 +42,9 @@
     
     
     
-      <link rel="stylesheet" href="../css/autodoc.css">
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../css/style.css">
     
     
       
@@ -55,13 +57,17 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue">
   
     
     <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -105,6 +111,28 @@
         </div>
       </div>
     </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+      </form>
     
     
     
@@ -233,9 +261,99 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-nav__icon md-icon"></span>
+          
+            <a href="./" class="md-nav__link md-nav__link--active"
+              style="margin: initial; padding: initial; pointer-events: initial">
+          
+            API Documentation
+          </a>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         API Documentation
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#phx_events.client.PHXChannelsClient" class="md-nav__link">
+    PHXChannelsClient
+  </a>
+  
+    <nav class="md-nav" aria-label="PHXChannelsClient">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phx_events.client.PHXChannelsClient.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phx_events.client.PHXChannelsClient.process_topic_registration_responses" class="md-nav__link">
+    process_topic_registration_responses()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phx_events.client.PHXChannelsClient.process_websocket_messages" class="md-nav__link">
+    process_websocket_messages()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phx_events.client.PHXChannelsClient.register_event_handler" class="md-nav__link">
+    register_event_handler()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phx_events.client.PHXChannelsClient.register_topic_subscription" class="md-nav__link">
+    register_topic_subscription()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phx_events.client.PHXChannelsClient.shutdown" class="md-nav__link">
+    shutdown()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phx_events.client.PHXChannelsClient.start_processing" class="md-nav__link">
+    start_processing()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -275,6 +393,76 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#phx_events.client.PHXChannelsClient" class="md-nav__link">
+    PHXChannelsClient
+  </a>
+  
+    <nav class="md-nav" aria-label="PHXChannelsClient">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phx_events.client.PHXChannelsClient.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phx_events.client.PHXChannelsClient.process_topic_registration_responses" class="md-nav__link">
+    process_topic_registration_responses()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phx_events.client.PHXChannelsClient.process_websocket_messages" class="md-nav__link">
+    process_websocket_messages()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phx_events.client.PHXChannelsClient.register_event_handler" class="md-nav__link">
+    register_event_handler()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phx_events.client.PHXChannelsClient.register_topic_subscription" class="md-nav__link">
+    register_topic_subscription()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phx_events.client.PHXChannelsClient.shutdown" class="md-nav__link">
+    shutdown()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phx_events.client.PHXChannelsClient.start_processing" class="md-nav__link">
+    start_processing()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -290,25 +478,376 @@
                   </a>
                 
                 
-                <h1 id="api-documentation">API documentation</h1>
-<div class="autodoc">
-<div class="autodoc-signature"><em>class </em><code>phx_events.client.<strong>PHXChannelsClient</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">channel_socket_url</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">channel_auth_token=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">event_loop=None</em><span class="autodoc-punctuation">)</span></div>
-<div class="autodoc-docstring"></div>
-<div class="autodoc-members">
-<div class="autodoc-signature"><code><strong>process_topic_registration_responses</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">self</em><span class="autodoc-punctuation">)</span></div>
-<div class="autodoc-docstring"></div>
-<div class="autodoc-signature"><code><strong>process_websocket_messages</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">self</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">websocket</em><span class="autodoc-punctuation">)</span></div>
-<div class="autodoc-docstring"></div>
-<div class="autodoc-signature"><code><strong>register_event_handler</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">self</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">event</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">handlers</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">topic=None</em><span class="autodoc-punctuation">)</span></div>
-<div class="autodoc-docstring"></div>
-<div class="autodoc-signature"><code><strong>register_topic_subscription</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">self</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">topic</em><span class="autodoc-punctuation">)</span></div>
-<div class="autodoc-docstring"></div>
-<div class="autodoc-signature"><code><strong>shutdown</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">self</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">reason</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">websocket=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">executor_pool=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">wait_for_completion=True</em><span class="autodoc-punctuation">)</span></div>
-<div class="autodoc-docstring"></div>
-<div class="autodoc-signature"><code><strong>start_processing</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">self</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">executor_pool=None</em><span class="autodoc-punctuation">)</span></div>
-<div class="autodoc-docstring"></div>
-</div>
-</div>
+                <h1 id="api-documentation">API documentation<a class="headerlink" href="#api-documentation" title="Permanent link">#</a></h1>
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="phx_events.client.PHXChannelsClient" class="doc doc-heading">
+        <code>phx_events.client.PHXChannelsClient</code>
+
+
+
+<a href="#phx_events.client.PHXChannelsClient" class="headerlink" title="Permanent link">#</a></h2>
+
+    <div class="doc doc-contents first">
+
+      <p>Provides the main functionality for running a client with asynchronous handlers</p>
+<p>This class should generally be initialised and used as an asynchronous context manager.</p>
+<p>Inside the <code>async with</code> block you should register for topics using <code>PHXChannelsClient.register_topic_subscription</code>
+and register event handlers using <code>PHXChannelsClient.register_event_handler</code>.</p>
+<p>Event handler functions can be <code>async</code> or normal functions.
+* Async functions are run in the event loop <code>PHXChannelsClient._loop</code>
+* Normal functions are run using the provided executor pool (<code>ThreadPoolExecutor</code> by default)</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="phx_events.client.PHXChannelsClient.__init__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel_socket_url</span><span class="p">,</span> <span class="n">channel_auth_token</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">event_loop</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+<a href="#phx_events.client.PHXChannelsClient.__init__" class="headerlink" title="Permanent link">#</a></h3>
+
+    <div class="doc doc-contents ">
+
+
+        <details class="quote">
+          <summary>Source code in <code>phx_events/client.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">channel_socket_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">channel_auth_token</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">event_loop</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">AbstractEventLoop</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">async_logger</span><span class="o">.</span><span class="n">getChild</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">channel_socket_url</span> <span class="o">=</span> <span class="n">channel_socket_url</span>
+    <span class="c1"># Set up auth if it&#39;s required</span>
+    <span class="k">if</span> <span class="n">channel_auth_token</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">channel_socket_url</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;?</span><span class="si">{</span><span class="n">urlencode</span><span class="p">({</span><span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="n">channel_auth_token</span><span class="p">})</span><span class="si">}</span><span class="s1">&#39;</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">_event_handler_config</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_topic_registration_status</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># Create the Event that will prevent handlers from being run before the client is started</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_client_start_event</span> <span class="o">=</span> <span class="n">Event</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_registration_queue</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_topic_registration_task</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">_executor_pool</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1"># Get the default event loop or use the user-provided one if it exists</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_loop</span> <span class="o">=</span> <span class="n">event_loop</span> <span class="ow">or</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="phx_events.client.PHXChannelsClient.process_topic_registration_responses" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">process_topic_registration_responses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-async"><code>async</code></small>
+  </span>
+
+<a href="#phx_events.client.PHXChannelsClient.process_topic_registration_responses" class="headerlink" title="Permanent link">#</a></h3>
+
+    <div class="doc doc-contents ">
+
+
+        <details class="quote">
+          <summary>Source code in <code>phx_events/client.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">process_topic_registration_responses</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">phx_message</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_registration_queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+        <span class="n">topic</span> <span class="o">=</span> <span class="n">phx_message</span><span class="o">.</span><span class="n">topic</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Got topic </span><span class="si">{</span><span class="n">topic</span><span class="si">}</span><span class="s1"> join reply </span><span class="si">{</span><span class="n">phx_message</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">status</span> <span class="o">=</span> <span class="n">SubscriptionStatus</span><span class="o">.</span><span class="n">SUCCESS</span> <span class="k">if</span> <span class="n">phx_message</span><span class="o">.</span><span class="n">payload</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;ok&#39;</span> <span class="k">else</span> <span class="n">SubscriptionStatus</span><span class="o">.</span><span class="n">FAILED</span>
+        <span class="n">status_message</span> <span class="o">=</span> <span class="s1">&#39;SUCCEEDED&#39;</span> <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">SubscriptionStatus</span><span class="o">.</span><span class="n">SUCCESS</span> <span class="k">else</span> <span class="s1">&#39;FAILED&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Topic registration </span><span class="si">{</span><span class="n">status_message</span><span class="si">}</span><span class="s1"> - </span><span class="si">{</span><span class="n">phx_message</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Set the topic status map</span>
+        <span class="n">topic_registration</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_topic_registration_status</span><span class="p">[</span><span class="n">topic</span><span class="p">]</span>
+        <span class="c1"># Set topic status with the message</span>
+        <span class="n">topic_registration</span><span class="o">.</span><span class="n">result</span> <span class="o">=</span> <span class="n">TopicSubscribeResult</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">phx_message</span><span class="p">)</span>
+        <span class="c1"># Notify any waiting tasks that the registration has been finalised and the status can be checked</span>
+        <span class="n">topic_registration</span><span class="o">.</span><span class="n">status_updated_event</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+        <span class="c1"># Tell the queue we&#39;ve finished processing the current task</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_registration_queue</span><span class="o">.</span><span class="n">task_done</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="phx_events.client.PHXChannelsClient.process_websocket_messages" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">process_websocket_messages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">websocket</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-async"><code>async</code></small>
+  </span>
+
+<a href="#phx_events.client.PHXChannelsClient.process_websocket_messages" class="headerlink" title="Permanent link">#</a></h3>
+
+    <div class="doc doc-contents ">
+
+
+        <details class="quote">
+          <summary>Source code in <code>phx_events/client.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">process_websocket_messages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">websocket</span><span class="p">:</span> <span class="n">client</span><span class="o">.</span><span class="n">WebSocketClientProtocol</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Starting websocket message loop&#39;</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">for</span> <span class="n">socket_message</span> <span class="ow">in</span> <span class="n">websocket</span><span class="p">:</span>
+        <span class="n">phx_message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_message</span><span class="p">(</span><span class="n">socket_message</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Processing message - </span><span class="si">{</span><span class="n">phx_message</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">event</span> <span class="o">=</span> <span class="n">phx_message</span><span class="o">.</span><span class="n">event</span>
+
+        <span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="n">PHXEvent</span><span class="o">.</span><span class="n">close</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Got Phoenix event </span><span class="si">{</span><span class="n">event</span><span class="si">}</span><span class="s1"> shutting down - </span><span class="si">{</span><span class="n">phx_message</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">TopicClosedError</span><span class="p">(</span><span class="n">topic</span><span class="o">=</span><span class="n">phx_message</span><span class="o">.</span><span class="n">topic</span><span class="p">,</span> <span class="n">reason</span><span class="o">=</span><span class="s1">&#39;Upstream closed&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="n">PHXEvent</span><span class="o">.</span><span class="n">error</span><span class="p">:</span>
+            <span class="c1"># Error happened in Elixir</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Got Phoenix event </span><span class="si">{</span><span class="n">event</span><span class="si">}</span><span class="s1"> shutting down - </span><span class="si">{</span><span class="n">phx_message</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="c1"># Hard exit if the server closes or errors</span>
+            <span class="k">raise</span> <span class="n">TopicClosedError</span><span class="p">(</span><span class="n">topic</span><span class="o">=</span><span class="n">phx_message</span><span class="o">.</span><span class="n">topic</span><span class="p">,</span> <span class="n">reason</span><span class="o">=</span><span class="s1">&#39;Upstream error&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Push message into registration queue if appropriate</span>
+        <span class="k">if</span> <span class="n">topic_registration_config</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_topic_registration_status</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">phx_message</span><span class="o">.</span><span class="n">topic</span><span class="p">):</span>  <span class="c1"># noqa: SIM102</span>
+            <span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="n">PHXEvent</span><span class="o">.</span><span class="n">reply</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">topic_registration_config</span><span class="o">.</span><span class="n">status_updated_event</span><span class="o">.</span><span class="n">is_set</span><span class="p">():</span>
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_registration_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">phx_message</span><span class="p">)</span>
+
+        <span class="n">event_handler_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_event_handler_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">event_handler_config</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Ignoring </span><span class="si">{</span><span class="n">phx_message</span><span class="si">=}</span><span class="s1"> - no event handlers registered&#39;</span><span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Submitting message to </span><span class="si">{</span><span class="n">event</span><span class="si">=}</span><span class="s1"> queue - </span><span class="si">{</span><span class="n">phx_message</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">event_handler_config</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">phx_message</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="phx_events.client.PHXChannelsClient.register_event_handler" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">register_event_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">handlers</span><span class="p">,</span> <span class="n">topic</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+<a href="#phx_events.client.PHXChannelsClient.register_event_handler" class="headerlink" title="Permanent link">#</a></h3>
+
+    <div class="doc doc-contents ">
+
+
+        <details class="quote">
+          <summary>Source code in <code>phx_events/client.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">register_event_handler</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">event</span><span class="p">:</span> <span class="n">ChannelEvent</span><span class="p">,</span>
+    <span class="n">handlers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ChannelHandlerFunction</span><span class="p">],</span>
+    <span class="n">topic</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Topic</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">event</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_event_handler_config</span><span class="p">:</span>
+        <span class="c1"># Create the coroutine that will become a task</span>
+        <span class="n">event_coroutine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_event_processor</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+
+        <span class="c1"># Create the default EventHandlerConfig</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_event_handler_config</span><span class="p">[</span><span class="n">event</span><span class="p">]</span> <span class="o">=</span> <span class="n">EventHandlerConfig</span><span class="p">(</span>
+            <span class="n">queue</span><span class="o">=</span><span class="n">Queue</span><span class="p">(),</span>
+            <span class="n">default_handlers</span><span class="o">=</span><span class="p">[],</span>
+            <span class="n">topic_handlers</span><span class="o">=</span><span class="p">{},</span>
+            <span class="n">task</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_loop</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">event_coroutine</span><span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="n">handler_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_event_handler_config</span><span class="p">[</span><span class="n">event</span><span class="p">]</span>
+    <span class="c1"># If there is a topic to be registered for - add the handlers to the topic handler</span>
+    <span class="k">if</span> <span class="n">topic</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">handler_config</span><span class="o">.</span><span class="n">topic_handlers</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">topic</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">handlers</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># otherwise, add them to the default handlers</span>
+        <span class="n">handler_config</span><span class="o">.</span><span class="n">default_handlers</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">handlers</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="phx_events.client.PHXChannelsClient.register_topic_subscription" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">register_topic_subscription</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">topic</span><span class="p">)</span></code>
+
+
+<a href="#phx_events.client.PHXChannelsClient.register_topic_subscription" class="headerlink" title="Permanent link">#</a></h3>
+
+    <div class="doc doc-contents ">
+
+
+        <details class="quote">
+          <summary>Source code in <code>phx_events/client.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">register_topic_subscription</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">topic</span><span class="p">:</span> <span class="n">Topic</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Event</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">topic_status</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_topic_registration_status</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">topic</span><span class="p">):</span>
+        <span class="n">topic_ref</span> <span class="o">=</span> <span class="n">topic_status</span><span class="o">.</span><span class="n">connection_ref</span>
+        <span class="k">raise</span> <span class="n">PHXTopicTooManyRegistrationsError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Topic </span><span class="si">{</span><span class="n">topic</span><span class="si">}</span><span class="s1"> already registered with </span><span class="si">{</span><span class="n">topic_ref</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Create an event to indicate when the reply has been processed</span>
+    <span class="n">status_updated_event</span> <span class="o">=</span> <span class="n">Event</span><span class="p">()</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">_topic_registration_status</span><span class="p">[</span><span class="n">topic</span><span class="p">]</span> <span class="o">=</span> <span class="n">TopicRegistration</span><span class="p">(</span><span class="n">status_updated_event</span><span class="o">=</span><span class="n">status_updated_event</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">status_updated_event</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="phx_events.client.PHXChannelsClient.shutdown" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">shutdown</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reason</span><span class="p">,</span> <span class="n">websocket</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">executor_pool</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">wait_for_completion</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+
+<a href="#phx_events.client.PHXChannelsClient.shutdown" class="headerlink" title="Permanent link">#</a></h3>
+
+    <div class="doc doc-contents ">
+
+
+        <details class="quote">
+          <summary>Source code in <code>phx_events/client.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">shutdown</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">reason</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">websocket</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">client</span><span class="o">.</span><span class="n">WebSocketClientProtocol</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">executor_pool</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Executor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">wait_for_completion</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Event loop shutting down! </span><span class="si">{</span><span class="n">reason</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">websocket</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_loop</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">websocket</span><span class="o">.</span><span class="n">close</span><span class="p">())</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_topic_registration_task</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_topic_registration_task</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">handler_config</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_event_handler_config</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="n">handler_config</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">executor_pool</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">executor_pool</span><span class="o">.</span><span class="n">shutdown</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="n">wait_for_completion</span><span class="p">,</span> <span class="n">cancel_futures</span><span class="o">=</span><span class="ow">not</span> <span class="n">wait_for_completion</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="phx_events.client.PHXChannelsClient.start_processing" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">start_processing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">executor_pool</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-async"><code>async</code></small>
+  </span>
+
+<a href="#phx_events.client.PHXChannelsClient.start_processing" class="headerlink" title="Permanent link">#</a></h3>
+
+    <div class="doc doc-contents ">
+
+
+        <details class="quote">
+          <summary>Source code in <code>phx_events/client.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">start_processing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">executor_pool</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Executor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_topic_registration_status</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;No subscribed topics nothing to do here - ending processing!&#39;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Creating the executor pool to use for processing registered handlers&#39;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_executor_pool</span> <span class="o">=</span> <span class="n">executor_pool</span> <span class="ow">or</span> <span class="n">ThreadPoolExecutor</span><span class="p">()</span>
+
+    <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_executor_pool</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Connecting to websocket&#39;</span><span class="p">)</span>
+
+        <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">channel_socket_url</span><span class="p">)</span> <span class="k">as</span> <span class="n">websocket</span><span class="p">:</span>
+            <span class="c1"># Close the connection when receiving SIGTERM</span>
+            <span class="n">shutdown_handler</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">shutdown</span><span class="p">,</span>
+                <span class="n">websocket</span><span class="o">=</span><span class="n">websocket</span><span class="p">,</span>
+                <span class="n">executor_pool</span><span class="o">=</span><span class="n">pool</span><span class="p">,</span>
+                <span class="n">wait_for_completion</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_loop</span><span class="o">.</span><span class="n">add_signal_handler</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGTERM</span><span class="p">,</span> <span class="n">partial</span><span class="p">(</span><span class="n">shutdown_handler</span><span class="p">,</span> <span class="n">reason</span><span class="o">=</span><span class="s1">&#39;SIGTERM&#39;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_loop</span><span class="o">.</span><span class="n">add_signal_handler</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGINT</span><span class="p">,</span> <span class="n">partial</span><span class="p">(</span><span class="n">shutdown_handler</span><span class="p">,</span> <span class="n">reason</span><span class="o">=</span><span class="s1">&#39;Keyboard Interrupt&#39;</span><span class="p">))</span>
+
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subscribe_to_registered_topics</span><span class="p">(</span><span class="n">websocket</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_client_start_event</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_websocket_messages</span><span class="p">(</span><span class="n">websocket</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
                 
                   
                     
@@ -317,7 +856,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 24, 2021</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 31, 2021</span>
       
     
   </small>
@@ -397,7 +936,7 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.409db549.min.js", "version": {"provider": "mike"}}</script>
     
     
       <script src="../assets/javascripts/bundle.756773cc.min.js"></script>
