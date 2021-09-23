@@ -69,7 +69,7 @@ mkdocs-include-markdown-plugin==3.2.3
     # via -r requirements/docs.in
 mkdocs-literate-nav==0.4.0
     # via -r requirements/docs.in
-mkdocs-material==7.2.6
+mkdocs-material==7.3.0
     # via -r requirements/docs.in
 mkdocs-material-extensions==1.0.3
     # via mkdocs-material
