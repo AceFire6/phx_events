@@ -122,7 +122,7 @@ toml==0.10.2
     #   pytest
 tomli==1.2.1
     # via coverage
-types-freezegun==1.1.0
+types-freezegun==1.1.2
     # via -r requirements/dev.in
 types-orjson==3.6.0
     # via -r requirements/dev.in
