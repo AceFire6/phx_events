@@ -234,7 +234,7 @@ class PHXChannelsClient:
 
         async for socket_message in websocket:
             phx_message = self._parse_message(socket_message)
-            self.logger.info(f'Processing message - {phx_message=}')
+            self.logger.debug(f'Processing message - {phx_message=}')
             event = phx_message.event
 
             if event == PHXEvent.close:
@@ -257,7 +257,7 @@ class PHXChannelsClient:
                 self.logger.debug(f'Ignoring {phx_message=} - no event handlers registered')
                 continue
 
-            self.logger.info(f'Submitting message to {event=} queue - {phx_message=}')
+            self.logger.debug(f'Submitting message to {event=} queue - {phx_message=}')
             await event_handler_config.queue.put(phx_message)
 
     async def _subscribe_to_registered_topics(self, websocket: client.WebSocketClientProtocol) -> None:
