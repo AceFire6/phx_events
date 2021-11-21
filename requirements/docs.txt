@@ -63,7 +63,7 @@ mkdocs-autorefs==0.2.1
     # via mkdocstrings
 mkdocs-ezlinks-plugin==0.1.12
     # via -r requirements/docs.in
-mkdocs-git-revision-date-localized-plugin==0.10.0
+mkdocs-git-revision-date-localized-plugin==0.10.2
     # via -r requirements/docs.in
 mkdocs-htmlproofer-plugin==0.7.0
     # via -r requirements/docs.in
