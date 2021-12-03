@@ -1,4 +1,4 @@
-name: 'Publish Project Docus'
+name: 'Publish Project Docs'
 description: 'Publish Project Documentation to GH Pages'
 
 inputs:
