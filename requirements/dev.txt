@@ -52,7 +52,7 @@ hypothesis==6.31.3
     # via -r requirements/dev.in
 iniconfig==1.1.1
     # via pytest
-isort==5.9.3
+isort==5.10.1
     # via -r requirements/dev.in
 jinja2==3.0.1
     # via diff-cover
