@@ -32,7 +32,7 @@ flake8==3.9.2
     #   pep8-naming
 flake8-broken-line==0.3.0
     # via -r requirements/dev.in
-flake8-commas==2.0.0
+flake8-commas==2.1.0
     # via -r requirements/dev.in
 flake8-comprehensions==3.6.1
     # via -r requirements/dev.in
