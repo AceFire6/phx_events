@@ -106,7 +106,7 @@ pytest-cov==3.0.0
     # via -r requirements/dev.in
 pytest-forked==1.3.0
     # via pytest-xdist
-pytest-xdist==2.4.0
+pytest-xdist==2.5.0
     # via -r requirements/dev.in
 python-dateutil==2.8.2
     # via freezegun
