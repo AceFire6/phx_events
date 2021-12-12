@@ -42,7 +42,7 @@ flake8-polyfill==1.0.2
     # via pep8-naming
 flake8-print==4.0.0
     # via -r requirements/dev.in
-flake8-quotes==3.3.0
+flake8-quotes==3.3.1
     # via -r requirements/dev.in
 flake8-simplify==0.14.2
     # via -r requirements/dev.in
