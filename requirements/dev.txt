@@ -44,7 +44,7 @@ flake8-print==4.0.0
     # via -r requirements/dev.in
 flake8-quotes==3.3.1
     # via -r requirements/dev.in
-flake8-simplify==0.14.2
+flake8-simplify==0.14.5
     # via -r requirements/dev.in
 freezegun==1.1.0
     # via -r requirements/dev.in
