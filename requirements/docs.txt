@@ -24,10 +24,11 @@ idna==3.2
     # via requests
 importlib-metadata==4.8.1
     # via mkdocs
-jinja2==3.0.1
+jinja2==3.1.2
     # via
     #   mike
     #   mkdocs
+    #   mkdocs-material
     #   mkdocstrings
 lxml==4.6.3
     # via mkdocs-htmlproofer-plugin
@@ -47,7 +48,7 @@ mergedeep==1.3.4
     # via mkdocs
 mike==1.1.2
     # via -r requirements/docs.in
-mkdocs==1.2.3
+mkdocs==1.3.0
     # via
     #   -r requirements/docs.in
     #   mike
@@ -71,7 +72,7 @@ mkdocs-include-markdown-plugin==3.2.3
     # via -r requirements/docs.in
 mkdocs-literate-nav==0.4.0
     # via -r requirements/docs.in
-mkdocs-material==7.2.6
+mkdocs-material==8.3.6
     # via -r requirements/docs.in
 mkdocs-material-extensions==1.0.3
     # via mkdocs-material
@@ -81,11 +82,11 @@ mkdocstrings==0.16.2
     # via -r requirements/docs.in
 packaging==21.0
     # via mkdocs
-pygments==2.10.0
+pygments==2.12.0
     # via mkdocs-material
 pygtrie==2.4.2
     # via mkdocs-ezlinks-plugin
-pymdown-extensions==8.2
+pymdown-extensions==9.5
     # via
     #   mkdocs-material
     #   mkdocstrings
