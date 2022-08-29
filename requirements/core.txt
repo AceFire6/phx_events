@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements/core.in
 #
-orjson==3.6.5
+orjson==3.8.0
     # via -r requirements/core.in
 websockets==10.1
     # via -r requirements/core.in
