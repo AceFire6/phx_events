@@ -54,7 +54,7 @@ jobs:
         echo 'EOF' >> "$GITHUB_ENV"
 
     - name: Add Diff Coverage Comment - Missing Coverage
-      uses: mshick/add-pr-comment@v1
+      uses: mshick/add-pr-comment@v2
       continue-on-error: true
       if: steps.diff-coverage.conclusion == 'success' && startsWith(env.DIFF_COVERAGE, 'Failure')
       with:
@@ -68,7 +68,7 @@ jobs:
         allow-repeats: false
 
     - name: Add Diff Coverage Comment - Fully Covered
-      uses: mshick/add-pr-comment@v1
+      uses: mshick/add-pr-comment@v2
       continue-on-error: true
       if: steps.diff-coverage.conclusion == 'success' && !startsWith(env.DIFF_COVERAGE, 'Failure')
       with:
