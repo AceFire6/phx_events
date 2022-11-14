@@ -60,7 +60,7 @@ markupsafe==2.0.1
     # via jinja2
 mccabe==0.6.1
     # via flake8
-mypy==0.910
+mypy==0.991
     # via -r requirements/dev.in
 mypy-extensions==0.4.3
     # via mypy
@@ -111,9 +111,7 @@ six==1.16.0
 sortedcontainers==2.4.0
     # via hypothesis
 toml==0.10.2
-    # via
-    #   mypy
-    #   pytest
+    # via pytest
 tomli==1.2.1
     # via coverage
 types-freezegun==1.1.3
