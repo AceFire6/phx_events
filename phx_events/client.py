@@ -288,6 +288,7 @@ class PHXChannelsClient:
             self.logger.debug('Connecting to websocket')
 
             async with client.connect(self.channel_socket_url) as websocket:
+                self.websocket = websocket
                 # Close the connection when receiving SIGTERM
                 shutdown_handler = partial(
                     self.shutdown,
