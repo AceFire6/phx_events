@@ -73,9 +73,7 @@ pluggy==0.13.1
     #   diff-cover
     #   pytest
 py==1.10.0
-    # via
-    #   pytest
-    #   pytest-forked
+    # via pytest-forked
 pycodestyle==2.7.0
     # via
     #   flake8
@@ -87,7 +85,7 @@ pygments==2.10.0
     # via diff-cover
 pyparsing==2.4.7
     # via packaging
-pytest==6.2.5
+pytest==7.2.1
     # via
     #   -r requirements/dev.in
     #   pytest-asyncio
@@ -111,9 +109,7 @@ six==1.16.0
 sortedcontainers==2.4.0
     # via hypothesis
 toml==0.10.2
-    # via
-    #   mypy
-    #   pytest
+    # via mypy
 tomli==1.2.1
     # via coverage
 types-freezegun==1.1.3
