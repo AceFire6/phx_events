@@ -23,7 +23,11 @@ gitpython==3.1.18
 idna==3.2
     # via requests
 importlib-metadata==4.8.1
-    # via mkdocs
+    # via
+    #   mike
+    #   mkdocs
+importlib-resources==6.4.5
+    # via mike
 jinja2==3.0.1
     # via
     #   mike
@@ -45,7 +49,7 @@ markupsafe==2.0.1
     #   mkdocstrings
 mergedeep==1.3.4
     # via mkdocs
-mike==1.1.2
+mike==2.1.3
     # via -r requirements/docs.in
 mkdocs==1.2.3
     # via
@@ -89,8 +93,10 @@ pymdown-extensions==8.2
     # via
     #   mkdocs-material
     #   mkdocstrings
-pyparsing==2.4.7
-    # via packaging
+pyparsing==3.2.0
+    # via
+    #   mike
+    #   packaging
 python-dateutil==2.8.2
     # via ghp-import
 pytkdocs==0.11.1
@@ -103,7 +109,9 @@ pyyaml==5.4.1
     #   mkdocs
     #   pyyaml-env-tag
 pyyaml-env-tag==0.1
-    # via mkdocs
+    # via
+    #   mike
+    #   mkdocs
 requests==2.26.0
     # via mkdocs-htmlproofer-plugin
 six==1.16.0
@@ -119,4 +127,6 @@ verspec==0.1.0
 watchdog==2.1.5
     # via mkdocs
 zipp==3.5.0
-    # via importlib-metadata
+    # via
+    #   importlib-metadata
+    #   importlib-resources
