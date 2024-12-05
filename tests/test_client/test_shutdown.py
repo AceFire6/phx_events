@@ -1,11 +1,14 @@
 from asyncio import Queue
 from unittest.mock import AsyncMock, Mock
 
+import pytest
+
 from phx_events.client import PHXChannelsClient
 from phx_events.phx_messages import EventHandlerConfig
 
 
 class TestPHXChannelsClientShutdown:
+    @pytest.fixture(autouse=True)
     def setup(self):
         self.event_loop = AsyncMock()
         self.phx_client = PHXChannelsClient('ws://url', event_loop=self.event_loop)

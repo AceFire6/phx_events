@@ -1,4 +1,5 @@
 from hypothesis import given
+import pytest
 
 from phx_events import json_handler
 from phx_events.client import PHXChannelsClient
@@ -7,6 +8,7 @@ from tests.strategy_utils import event_strategy, phx_event_strategy
 
 
 class TestPHXChannelsClientParseMessage:
+    @pytest.fixture(autouse=True)
     def setup(self):
         self.phx_client = PHXChannelsClient('ws://url')
 

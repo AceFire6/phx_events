@@ -10,7 +10,8 @@ pytestmark = pytest.mark.asyncio
 
 
 class TestPHXChannelsClientInit:
-    def setup(self):
+    @pytest.fixture(autouse=True)
+    def setup(self, event_loop):
         self.socket_url = 'ws://test.socket/url/'
         self.channel_auth_token = 'test_token'
 

@@ -13,7 +13,8 @@ pytestmark = pytest.mark.asyncio
 
 
 class TestPHXChannelsClientProcessWebsocketMessages:
-    def setup(self):
+    @pytest.fixture(autouse=True)
+    def setup(self, event_loop):
         self.phx_client = PHXChannelsClient('ws://url/')
         self.topic = Topic('topic:subtopic')
 

@@ -1,4 +1,7 @@
+import asyncio
+
 import pytest
+from pytest_asyncio.plugin import event_loop
 
 from phx_events.client import PHXChannelsClient
 from phx_events.phx_messages import PHXEvent, Topic
@@ -10,15 +13,17 @@ pytestmark = pytest.mark.asyncio
 
 
 class TestPHXChannelsClientProcessTopicRegistrationResponses:
-    def setup(self):
+    @pytest.fixture(autouse=True)
+    def setup(self, event_loop):
         self.phx_client = PHXChannelsClient('ws://url/')
         self.topic = Topic('topic:subtopic')
         self.topic_event = self.phx_client.register_topic_subscription(self.topic)
 
-    async def test_updates_registration_status_for_success(self, event_loop):
+    async def test_updates_registration_status_for_success(self):
         registration_response = make_message(PHXEvent.reply, self.topic, payload={'status': 'ok'})
         await self.phx_client._registration_queue.put(registration_response)
 
+        event_loop = asyncio.get_event_loop()
         event_loop.create_task(self.phx_client.process_topic_registration_responses())
 
         # Wait until the item is processed
@@ -29,10 +34,11 @@ class TestPHXChannelsClientProcessTopicRegistrationResponses:
         assert registration_status.result.status == SubscriptionStatus.SUCCESS
         assert registration_status.result.result_message == registration_response
 
-    async def test_updates_registration_status_for_failed(self, event_loop):
+    async def test_updates_registration_status_for_failed(self):
         negative_registration_response = make_message(PHXEvent.reply, self.topic, payload={'status': 'error'})
         await self.phx_client._registration_queue.put(negative_registration_response)
 
+        event_loop = asyncio.get_event_loop()
         event_loop.create_task(self.phx_client.process_topic_registration_responses())
 
         # Wait until the item is processed

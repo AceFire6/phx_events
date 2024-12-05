@@ -1,6 +1,8 @@
 import asyncio
 from unittest.mock import Mock, patch
 
+import pytest
+
 from phx_events.client import PHXChannelsClient
 from phx_events.phx_messages import Event, Topic
 
@@ -10,7 +12,8 @@ async def handler_function(message, client):
 
 
 class TestPHXChannelsClientRegisterEventHandler:
-    def setup(self):
+    @pytest.fixture(autouse=True)
+    def setup(self, event_loop):
         self.phx_client = PHXChannelsClient('ws://url/')
         self.event = Event('event_name')
 

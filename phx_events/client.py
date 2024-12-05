@@ -9,7 +9,7 @@ from types import TracebackType
 from typing import Awaitable, cast, Optional, Type, Union
 from urllib.parse import urlencode
 
-from websockets import client
+from websockets import client, connect as ws_connect
 
 from phx_events import json_handler
 from phx_events.async_logger import async_logger
@@ -43,6 +43,7 @@ class PHXChannelsClient:
     """
     channel_socket_url: str
     logger: Logger
+    websocket: Optional[client.ClientConnection] = None
 
     _client_start_event: Event
     _event_handler_config: dict[ChannelEvent, EventHandlerConfig]
@@ -260,7 +261,7 @@ class PHXChannelsClient:
             self.logger.debug(f'Submitting message to {event=} queue - {phx_message=}')
             await event_handler_config.queue.put(phx_message)
 
-    async def _subscribe_to_registered_topics(self, websocket: client.WebSocketClientProtocol) -> None:
+    async def _subscribe_to_registered_topics(self, websocket: client.ClientConnection) -> None:
         self._topic_registration_task = self._loop.create_task(self.process_topic_registration_responses())
 
         registration_messages = []
@@ -287,7 +288,9 @@ class PHXChannelsClient:
         with self._executor_pool as pool:
             self.logger.debug('Connecting to websocket')
 
-            async with client.connect(self.channel_socket_url) as websocket:
+            async with ws_connect(self.channel_socket_url) as websocket:
+                self.websocket = websocket
+
                 # Close the connection when receiving SIGTERM
                 shutdown_handler = partial(
                     self.shutdown,

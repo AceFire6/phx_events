@@ -14,7 +14,8 @@ pytestmark = pytest.mark.asyncio
 
 
 class TestPHXChannelsClientEventProcessor:
-    def setup(self):
+    @pytest.fixture(autouse=True)
+    def setup(self, event_loop):
         self.phx_client = PHXChannelsClient('ws://url/')
         self.event = Event('event_name')
         self.other_event = Event('other_event_name')
@@ -65,10 +66,12 @@ class TestPHXChannelsClientEventProcessor:
         assert log_level == logging.DEBUG
         assert message == f'{self.event} Worker - Waiting for client start!'
 
-    async def test_only_event_handlers_used_for_event_no_topic(self, event_loop, caplog):
+    async def test_only_event_handlers_used_for_event_no_topic(self, caplog):
         event_handler_config = self.phx_client._event_handler_config[self.event]
         event_message = make_message(self.event, Topic('random_topic'))
         await event_handler_config.queue.put(event_message)
+
+        event_loop = asyncio.get_event_loop()
 
         mock_loop = Mock(event_loop, autospec=True, wraps=event_loop)
         self.phx_client._loop = mock_loop
@@ -89,10 +92,12 @@ class TestPHXChannelsClientEventProcessor:
         # We don't expect the event_topic_handler to have been called
         mock_loop.run_in_executor.assert_not_called()
 
-    async def test_all_event_handlers_used_for_event_with_topic(self, event_loop, caplog):
+    async def test_all_event_handlers_used_for_event_with_topic(self, caplog):
         event_handler_config = self.phx_client._event_handler_config[self.event]
         event_message = make_message(self.event, self.topic)
         await event_handler_config.queue.put(event_message)
+
+        event_loop = asyncio.get_event_loop()
 
         mock_loop = Mock(event_loop, wraps=event_loop)
         self.phx_client._loop = mock_loop
@@ -116,7 +121,7 @@ class TestPHXChannelsClientEventProcessor:
         # We don't expect the event_topic_handler to have been called
         mock_loop.run_in_executor.assert_called()
 
-    async def test_event_handler_errors_intercepted_and_logged(self, event_loop, caplog):
+    async def test_event_handler_errors_intercepted_and_logged(self, caplog):
         async def coro_erroring_event_handler(message, client):
             raise Exception(coro_erroring_event_handler.__name__)
 
@@ -133,6 +138,8 @@ class TestPHXChannelsClientEventProcessor:
 
         event_message = make_message(event, self.topic)
         await event_handler_config.queue.put(event_message)
+
+        event_loop = asyncio.get_event_loop()
 
         mock_loop = Mock(event_loop, wraps=event_loop)
         self.phx_client._loop = mock_loop

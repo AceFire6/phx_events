@@ -8,6 +8,7 @@ from phx_events.phx_messages import Topic
 
 
 class TestPHXChannelsClientRegisterTopicSubscription:
+    @pytest.fixture(autouse=True)
     def setup(self):
         self.phx_client = PHXChannelsClient('ws://url')
 

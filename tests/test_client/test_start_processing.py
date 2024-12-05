@@ -11,7 +11,8 @@ pytestmark = pytest.mark.asyncio
 
 
 class TestPHXChannelsClientStartProcessing:
-    def setup(self):
+    @pytest.fixture(autouse=True)
+    def setup(self, event_loop):
         self.phx_client = PHXChannelsClient('ws://url/')
         self.phx_client.register_topic_subscription(Topic('topic:subtopic'))
 
@@ -21,16 +22,16 @@ class TestPHXChannelsClientStartProcessing:
         assert len(caplog.messages) == 1
         assert caplog.messages[0] == 'No subscribed topics nothing to do here - ending processing!'
 
-    async def test_threadpool_executor_used_if_no_executor_pool_specified(self, mock_websocket_client):
+    async def test_threadpool_executor_used_if_no_executor_pool_specified(self, mock_websocket_connect):
         with patch('phx_events.client.ThreadPoolExecutor') as mock_thread_pool:
             await self.phx_client.start_processing()
 
         mock_thread_pool.assert_called()
 
-    async def test_websocket_client_called_with_url(self, mock_websocket_client):
+    async def test_websocket_client_called_with_url(self, mock_websocket_connect):
         await self.phx_client.start_processing()
 
-        mock_websocket_client.connect.assert_called_with(self.phx_client.channel_socket_url)
+        mock_websocket_connect.assert_called_with(self.phx_client.channel_socket_url)
 
     async def test_signal_handlers_functions_created_and_registered_correctly(
         self,

@@ -11,6 +11,7 @@ pytestmark = pytest.mark.asyncio
 
 
 class TestPHXChannelsClientSubscribeToRegisteredTopics:
+    @pytest.fixture(autouse=True)
     def setup(self):
         self.phx_client = PHXChannelsClient('ws://url/')
         self.topic = Topic('topic:subtopic')

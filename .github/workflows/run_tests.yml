@@ -9,15 +9,19 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        py_version: ['3.11', '3.12']
+
     steps:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
 
-    - name: Set up Python 3.9
+    - name: Set up Python ${{ matrix.py_version }}
       uses: actions/setup-python@v2
       with:
-        python-version: 3.9
+        python-version: ${{ matrix.py_version }}
 
     - name: Get OS Version
       run: echo "os_version=$(lsb_release -sr)" >> "$GITHUB_ENV"
@@ -29,10 +33,11 @@ jobs:
         path: |
           ${{ env.pythonLocation }}
           ~/.cache/pip
-        key: ${{ runner.os }}-${{ env.os_version }}-${{ env.pythonLocation }}-${{ hashFiles('requirements/core.txt') }}-${{ hashFiles('requirements/dev.txt') }}
+        key: ${{ runner.os }}-${{ env.os_version }}-${{ matrix.py_version }}-${{ env.pythonLocation }}-${{ hashFiles('requirements/core.txt') }}-${{ hashFiles('requirements/dev.txt') }}
         restore-keys: |
-          ${{ runner.os }}-${{ env.os_version }}-${{ env.pythonLocation }}-${{ hashFiles('requirements/core.txt') }}-
-          ${{ runner.os }}-${{ env.os_version }}-${{ env.pythonLocation }}-
+          ${{ runner.os }}-${{ env.os_version }}-${{ matrix.py_version }}-${{ env.pythonLocation }}-${{ hashFiles('requirements/core.txt') }}-
+          ${{ runner.os }}-${{ env.os_version }}-${{ matrix.py_version }}-${{ env.pythonLocation }}-
+          ${{ runner.os }}-${{ env.os_version }}-${{ matrix.py_version }}-
 
     - name: Install dependencies
       if: steps.cache-pip.outputs.cache-hit != 'true'
