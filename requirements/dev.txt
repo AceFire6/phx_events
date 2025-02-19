@@ -16,7 +16,7 @@ coverage[toml]==6.0.1
     # via
     #   -r requirements/dev.in
     #   pytest-cov
-diff-cover==6.4.4
+diff-cover==9.2.3
     # via -r requirements/dev.in
 execnet==1.9.0
     # via pytest-xdist
@@ -83,7 +83,7 @@ pycodestyle==2.7.0
     #   flake8-print
 pyflakes==2.3.1
     # via flake8
-pygments==2.10.0
+pygments==2.19.1
     # via diff-cover
 pyparsing==2.4.7
     # via packaging
