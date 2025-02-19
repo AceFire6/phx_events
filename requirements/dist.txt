@@ -12,15 +12,13 @@ docutils==0.17.1
     # via flit
 flit==3.3.0
     # via -r requirements/dist.in
-flit-core==3.3.0
+flit-core==3.11.0
     # via flit
 idna==3.2
     # via requests
 requests==2.26.0
     # via flit
 toml==0.10.2
-    # via
-    #   flit
-    #   flit-core
+    # via flit
 urllib3==1.26.6
     # via requests
