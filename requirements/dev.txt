@@ -6,7 +6,7 @@
 #
 astor==0.8.1
     # via flake8-simplify
-attrs==21.2.0
+attrs==25.1.0
     # via
     #   hypothesis
     #   pytest
@@ -48,7 +48,7 @@ flake8-simplify==0.14.2
     # via -r requirements/dev.in
 freezegun==1.1.0
     # via -r requirements/dev.in
-hypothesis==6.31.3
+hypothesis==6.127.3
     # via -r requirements/dev.in
 iniconfig==1.1.1
     # via pytest
