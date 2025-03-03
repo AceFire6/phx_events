@@ -7,9 +7,7 @@
 astor==0.8.1
     # via flake8-simplify
 attrs==21.2.0
-    # via
-    #   hypothesis
-    #   pytest
+    # via hypothesis
 chardet==4.0.0
     # via diff-cover
 coverage[toml]==6.0.1
@@ -68,14 +66,12 @@ packaging==21.0
     # via pytest
 pep8-naming==0.12.1
     # via -r requirements/dev.in
-pluggy==0.13.1
+pluggy==1.5.0
     # via
     #   diff-cover
     #   pytest
 py==1.10.0
-    # via
-    #   pytest
-    #   pytest-forked
+    # via pytest-forked
 pycodestyle==2.7.0
     # via
     #   flake8
@@ -87,7 +83,7 @@ pygments==2.10.0
     # via diff-cover
 pyparsing==2.4.7
     # via packaging
-pytest==6.2.5
+pytest==8.3.5
     # via
     #   -r requirements/dev.in
     #   pytest-asyncio
@@ -111,9 +107,7 @@ six==1.16.0
 sortedcontainers==2.4.0
     # via hypothesis
 toml==0.10.2
-    # via
-    #   mypy
-    #   pytest
+    # via mypy
 tomli==1.2.1
     # via coverage
 types-freezegun==1.1.3
